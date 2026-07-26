@@ -12,12 +12,14 @@ export default defineConfig({
   vite: { plugins: [tailwindcss()] },
   image: { formats: ['avif', 'webp'] },
   redirects: {
-    // campaign shortlinks
-    '/hire': '/plant-hire',
-    '/excavator-hire': '/plant-hire',
-    '/gps': '/gps-excavator-hire',
-    '/poly-welding': '/poly-welder-hire',
-    '/telehandler': '/telehandler-hire',
+    // Campaign shortlinks. The ad landing pages they used to point at are drafted
+    // (src/pages/_drafts), so these go to the nearest live page instead of 404ing.
+    // Restore the original targets when those pages are published again.
+    '/hire': '/equipment',
+    '/excavator-hire': '/equipment',
+    '/gps': '/equipment',
+    '/telehandler': '/equipment',
+    '/poly-welding': '/services',
     // old Wix URLs → new structure
     '/copy-of-recent-projects': '/projects',
     '/cracowgoldmine': '/projects/cracow-tailings-dam',

@@ -2,27 +2,27 @@
   "redirects": [
     {
       "source": "/hire",
-      "destination": "/plant-hire",
+      "destination": "/equipment",
       "statusCode": 301
     },
     {
       "source": "/excavator-hire",
-      "destination": "/plant-hire",
+      "destination": "/equipment",
       "statusCode": 301
     },
     {
       "source": "/gps",
-      "destination": "/gps-excavator-hire",
-      "statusCode": 301
-    },
-    {
-      "source": "/poly-welding",
-      "destination": "/poly-welder-hire",
+      "destination": "/equipment",
       "statusCode": 301
     },
     {
       "source": "/telehandler",
-      "destination": "/telehandler-hire",
+      "destination": "/equipment",
+      "statusCode": 301
+    },
+    {
+      "source": "/poly-welding",
+      "destination": "/services",
       "statusCode": 301
     },
     {

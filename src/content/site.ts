@@ -39,7 +39,6 @@ export const site = {
     { label: 'Services', href: '/services' },
     { label: 'Equipment', href: '/equipment' },
     { label: 'Projects', href: '/projects' },
-    { label: 'Plant Hire', href: '/plant-hire' },
     { label: 'Contact', href: '/contact' },
   ],
 } as const;

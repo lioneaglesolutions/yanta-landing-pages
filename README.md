@@ -22,14 +22,10 @@ Replaces the previous Wix site. All copy and photography was ported from it (see
 | `/contact` | Contact details + enquiry form |
 | `/privacy` | Required by Meta for lead ads |
 
-**Campaign landing pages** — `chrome="landing"` (navy header, sticky mobile call bar, no nav)
-
-| Route | Ad traffic |
-|---|---|
-| `/plant-hire` | Excavator hire · Plant & earthmoving (Google), Broad/Rural (Meta) |
-| `/gps-excavator-hire` | GPS / machine control |
-| `/telehandler-hire` | Telehandler |
-| `/poly-welder-hire` | Poly welder hire · Poly welding services |
+**Campaign landing pages — currently drafted, not published.** The four ad landing pages
+live in `src/pages/_drafts/`, which Astro excludes from routing, so they build no routes and
+appear in no sitemap. Their copy is still in `src/content/pages/*.ts` and still Zod-validated
+at build. See `src/pages/_drafts/README.md` to publish them again.
 
 Every old Wix URL redirects to its new home — see `redirects` in `astro.config.mjs`.
 
@@ -100,8 +96,8 @@ pnpm build      # static build to dist/
 2. **Tags** — set `PUBLIC_META_PIXEL_ID`, `PUBLIC_GA4_ID`, `PUBLIC_GOOGLE_ADS_ID` and the two
    conversion labels. Tags only render when their ID is set.
 3. **Packages prices** — `src/content/pages/plant-hire.ts` ships "Priced to the job" instead of
-   "from $X"; put real numbers in (genuinely achievable, per ACL) or drop `'packages'` from
-   the `sections` array.
+   "from $X". Only matters when that landing page is un-drafted; put real numbers in
+   (genuinely achievable, per ACL) or drop `'packages'` from the `sections` array.
 4. **DNS cutover** — point `www.yanta.com.au` at Vercel, away from Wix. Verify the domain in
    Meta Business Settings and submit `/sitemap-index.xml` in Google Search Console.
 

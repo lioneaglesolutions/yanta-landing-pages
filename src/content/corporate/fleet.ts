@@ -66,7 +66,7 @@ export const fleet: readonly FleetCategory[] = [
     units: [
       { id: 'YAN041', type: 'Excavator 35 tonne', description: 'Hitachi ZX360LC-5B Excavator, 2000 tilt bucket, 1800 GP, 750 GP. TOPCON GPS wiring.', usage: '1700hrs', availability: 'on-hire' },
       { id: 'YAN025', type: 'Excavator 25 tonne', description: 'Hitachi ZX225USLC-5B Excavator, tilt hitch, 1800 mud bucket, 1200 GP, 600 GP.', usage: '1450hrs', availability: 'available', href: '/equipment/excavator-25t' },
-      { id: 'YAN050', type: 'Excavator 13.5 tonne with GPS', description: 'Hitachi 13.5 Tonne Excavator — GPS fitted, Trimble Earthworks. Blade, 1500 mud bucket, 900 GP bucket, 600 GP bucket, rubber pads.', usage: '600hrs', availability: 'available', href: '/gps-excavator-hire', highDemand: true, demandNote: 'Few machine-control excavators available for hire in Central Queensland' },
+      { id: 'YAN050', type: 'Excavator 13.5 tonne with GPS', description: 'Hitachi 13.5 Tonne Excavator — GPS fitted, Trimble Earthworks. Blade, 1500 mud bucket, 900 GP bucket, 600 GP bucket, rubber pads.', usage: '600hrs', availability: 'available', highDemand: true, demandNote: 'Few machine-control excavators available for hire in Central Queensland' },
       { id: 'YAN008', type: 'Excavator 5 tonne', description: 'Hitachi ZX55U-5 Excavator, 1200 mud bucket, 600 GP, 300 GP, ripper.', usage: '1045hrs', availability: 'on-hire' },
       { id: 'YAN006', type: 'Excavator 1.7 tonne', description: 'Kubota', usage: '1100hrs', availability: 'on-hire' },
     ],
@@ -76,8 +76,8 @@ export const fleet: readonly FleetCategory[] = [
     title: 'Material handling',
     units: [
       { id: 'YAN022', type: 'Integrated tool carrier', description: 'Hitachi ZW180-5 PL Loader — ITC. Hydraulic positioning forks with grab, jib, bucket.', usage: '1845hrs', availability: 'available', href: '/equipment/zw180-loader' },
-      { id: 'YAN024', type: 'Telehandler', description: 'Merlo P72.10 Telehandler. 2200mm wide hydraulic positioning fork carriage, jib, bucket.', usage: '1735hrs', availability: 'available', href: '/telehandler-hire', highDemand: true, demandNote: 'Most hire fleets stock 3T — this is a 7T class machine' },
-      { id: 'YAN049', type: 'Telehandler', description: 'Merlo P72.10 Telehandler.', usage: '1089hrs', availability: 'on-hire', href: '/telehandler-hire', highDemand: true, demandNote: 'Most hire fleets stock 3T — this is a 7T class machine' },
+      { id: 'YAN024', type: 'Telehandler', description: 'Merlo P72.10 Telehandler. 2200mm wide hydraulic positioning fork carriage, jib, bucket.', usage: '1735hrs', availability: 'available', highDemand: true, demandNote: 'Most hire fleets stock 3T — this is a 7T class machine' },
+      { id: 'YAN049', type: 'Telehandler', description: 'Merlo P72.10 Telehandler.', usage: '1089hrs', availability: 'on-hire', highDemand: true, demandNote: 'Most hire fleets stock 3T — this is a 7T class machine' },
       { id: 'YAN045', type: 'Posi track', description: 'Kubota SVL75-3 Posi Track. Bucket, jib, forks.', usage: '401hrs', availability: 'available', href: '/equipment/kubota-posi-track' },
       { id: 'YAN007', type: 'Skid steer', description: 'Hyundai HSL 650-7A. 4-in-1 bucket, forks.', usage: '600hrs', availability: 'available' },
     ],
@@ -87,7 +87,7 @@ export const fleet: readonly FleetCategory[] = [
     title: 'Trucks & vehicles',
     units: [
       { id: 'YAN037', type: 'Flattop', description: 'Iveco Beavertail Truck', usage: '17,435km', availability: 'available' },
-      { id: 'YAN052', type: 'Tipper truck', description: 'IVECO 11 cubic metre tipper', usage: '8200km', availability: 'available' },
+      { id: 'YAN052', type: 'Tipper truck', description: 'IVECO 11 cubic metre tipper', usage: '8200km', availability: 'on-hire' },
       { id: 'YAN053', type: 'Light truck', description: 'Hyundai light truck.', usage: '4000km', availability: 'available' },
       { id: 'YAN016', type: 'Crew cab truck', description: 'Mitsubishi Fuso Canter 4x4 Truck, Kevrek crane.', usage: '17,930km', availability: 'available' },
       { id: 'YAN031', type: 'Minibus', description: 'Toyota Commuter Minibus. Mine spec.', usage: '19,225km', availability: 'available' },
@@ -98,7 +98,7 @@ export const fleet: readonly FleetCategory[] = [
   {
     slug: 'poly-welding',
     title: 'Poly welding',
-    note: 'Poly welders are hired on request — dry hire to crews with a current PMBWELD ticket, or supplied with a PMBWELD-certified welder and weld data reports.',
+    note: 'Poly welders are hired on request with a crew supplied — a PMBWELD-certified welder and weld data reports come with the machine.',
     units: [
       { id: 'YPW010', type: 'Poly welder', description: 'Bushranger 630 Track Poly Welder', usage: '2434hrs', availability: 'on-request', href: '/equipment/bushranger-630', highDemand: true, demandNote: 'Welds to 630mm without waiting on interstate freight' },
       { id: 'YPW011', type: 'Poly welder', description: 'Worldpoly Poly Force 500 Track Welder', usage: '447hrs', availability: 'on-request' },
