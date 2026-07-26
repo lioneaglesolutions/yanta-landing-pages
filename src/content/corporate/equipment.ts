@@ -17,7 +17,7 @@ export const equipmentIntro = {
   kicker: 'Equipment',
   heading: 'Our Equipment for Hire',
   lead: 'At Yanta, we offer a wide range of high-quality equipment for hire, perfect for construction, landscaping, and industrial projects of any scale. Our reliable, well-maintained machinery is designed for maximum efficiency, safety, and ease of use. With flexible hire options, competitive pricing, and expert guidance, we make it simple to get the right equipment quickly and conveniently, exactly when and where you need it.',
-  hireEmail: 'hire@yanta.com.au',
+  hireEmail: 'ian@yanta.com.au',
 } as const;
 
 export const equipment: readonly Machine[] = [
