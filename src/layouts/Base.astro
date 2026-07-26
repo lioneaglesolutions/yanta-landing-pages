@@ -52,6 +52,9 @@ const localBusiness = {
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="preload" as="font" type="font/woff2" href={montserratWoff2} crossorigin />
+    {/* Marks JS as available before first paint, so progressive enhancements
+        (e.g. the collapsible mobile nav) never flash their no-JS state. */}
+    <script is:inline>document.documentElement.dataset.js = '1';</script>
     <Seo title={title} description={description} image={ogImage} />
     <JsonLd data={localBusiness} />
     <Analytics />

@@ -37,3 +37,18 @@ body {
   outline: 3px solid var(--color-green);
   outline-offset: 2px;
 }
+
+/* Mobile nav — progressive enhancement.
+   Without JS the nav stays visible (it just wraps), so navigation always works.
+   With JS it collapses behind the toggle button below the md breakpoint. */
+@media (max-width: 767px) {
+  html[data-js] .nav-toggle {
+    display: inline-flex;
+  }
+  html[data-js] .nav-panel {
+    display: none;
+  }
+  html[data-js] .nav-panel[data-open] {
+    display: block;
+  }
+}
