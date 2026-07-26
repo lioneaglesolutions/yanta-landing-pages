@@ -1,0 +1,99 @@
+{
+  "redirects": [
+    {
+      "source": "/hire",
+      "destination": "/plant-hire",
+      "statusCode": 301
+    },
+    {
+      "source": "/excavator-hire",
+      "destination": "/plant-hire",
+      "statusCode": 301
+    },
+    {
+      "source": "/gps",
+      "destination": "/gps-excavator-hire",
+      "statusCode": 301
+    },
+    {
+      "source": "/poly-welding",
+      "destination": "/poly-welder-hire",
+      "statusCode": 301
+    },
+    {
+      "source": "/telehandler",
+      "destination": "/telehandler-hire",
+      "statusCode": 301
+    },
+    {
+      "source": "/copy-of-recent-projects",
+      "destination": "/projects",
+      "statusCode": 301
+    },
+    {
+      "source": "/cracowgoldmine",
+      "destination": "/projects/cracow-tailings-dam",
+      "statusCode": 301
+    },
+    {
+      "source": "/cracow-gold-mine1",
+      "destination": "/projects/cracow-pit-dewatering",
+      "statusCode": 301
+    },
+    {
+      "source": "/cracow-gold-mine2",
+      "destination": "/projects/cracow-tailings-lift",
+      "statusCode": 301
+    },
+    {
+      "source": "/cracow-gold-mine3",
+      "destination": "/projects/cracow-bioremediation-pits",
+      "statusCode": 301
+    },
+    {
+      "source": "/highintensitygrinding",
+      "destination": "/projects/cracow-hig-mill",
+      "statusCode": 301
+    },
+    {
+      "source": "/tsf4cell1cell2raise",
+      "destination": "/projects/talison-bgm-liner",
+      "statusCode": 301
+    },
+    {
+      "source": "/tsf4cell1cell2raise-1",
+      "destination": "/projects/talison-hdpe-pipeline",
+      "statusCode": 301
+    },
+    {
+      "source": "/tsf4cell1cell2raise1265mrl",
+      "destination": "/projects/talison-bgm-liner-1265mrl",
+      "statusCode": 301
+    },
+    {
+      "source": "/tecnoduebushranger630",
+      "destination": "/equipment/bushranger-630",
+      "statusCode": 301
+    },
+    {
+      "source": "/kubotaposi-track",
+      "destination": "/equipment/kubota-posi-track",
+      "statusCode": 301
+    },
+    {
+      "source": "/excavator-25t",
+      "destination": "/equipment/excavator-25t",
+      "statusCode": 301
+    },
+    {
+      "source": "/zw180loader",
+      "destination": "/equipment/zw180-loader",
+      "statusCode": 301
+    },
+    {
+      "source": "/dpu6555",
+      "destination": "/equipment/dpu6555",
+      "statusCode": 301
+    }
+  ]
+}

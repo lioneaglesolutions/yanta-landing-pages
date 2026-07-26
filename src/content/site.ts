@@ -1,10 +1,19 @@
-/** Site-wide facts — phone, email, identity. One place, everywhere. */
+import { env } from '../lib/env';
+
+/**
+ * Site-wide facts — phone, email, identity. One place, everywhere.
+ *
+ * Values come from the validated env module rather than raw import.meta.env: a
+ * blank var there (which `??` would happily pass through as an empty string)
+ * would silently break canonicals, the sitemap and the form's _next URL.
+ * Server-side only — never import this into a client <script>, as it pulls in zod.
+ */
 export const site = {
   name: 'Yanta',
   legalName: 'Yanta',
   tagline: 'PLANT HIRE · ROCKHAMPTON',
-  url: import.meta.env.PUBLIC_SITE_URL ?? 'https://www.yanta.com.au',
-  phone: import.meta.env.PUBLIC_PHONE ?? '+61429165375',
+  url: env.PUBLIC_SITE_URL,
+  phone: env.PUBLIC_PHONE,
   phoneDisplay: '0429 165 375',
   callName: 'Ian',
   email: 'admin@yanta.com.au',

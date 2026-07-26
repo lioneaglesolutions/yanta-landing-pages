@@ -1,7 +1,10 @@
 {
   "forms": {
     "website": {
-      "name": "Yanta website enquiries"
+      "name": "Yanta website enquiries",
+      "actions": [
+        { "type": "email", "to": "james@lioneagle.solutions" }
+      ]
     }
   }
 }

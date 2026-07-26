@@ -6,7 +6,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://www.yanta.com.au',
   output: 'static',
-  integrations: [sitemap()],
+  // /thanks is a post-submission confirmation page carrying noindex — keep it out
+  // of the sitemap so the two signals don't contradict each other.
+  integrations: [sitemap({ filter: (page) => !page.includes('/thanks') })],
   vite: { plugins: [tailwindcss()] },
   image: { formats: ['avif', 'webp'] },
   redirects: {

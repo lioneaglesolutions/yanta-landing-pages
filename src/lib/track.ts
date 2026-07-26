@@ -10,11 +10,15 @@ declare global {
   }
 }
 
-import { DEFAULT_GOOGLE_ADS_ID } from './constants';
+import {
+  DEFAULT_GOOGLE_ADS_CALL_LABEL,
+  DEFAULT_GOOGLE_ADS_ID,
+  DEFAULT_GOOGLE_ADS_LEAD_LABEL,
+} from './constants';
 
 const ADS_ID = import.meta.env.PUBLIC_GOOGLE_ADS_ID || DEFAULT_GOOGLE_ADS_ID;
-const LEAD_LABEL = import.meta.env.PUBLIC_GOOGLE_ADS_LEAD_LABEL;
-const CALL_LABEL = import.meta.env.PUBLIC_GOOGLE_ADS_CALL_LABEL;
+const LEAD_LABEL = import.meta.env.PUBLIC_GOOGLE_ADS_LEAD_LABEL || DEFAULT_GOOGLE_ADS_LEAD_LABEL;
+const CALL_LABEL = import.meta.env.PUBLIC_GOOGLE_ADS_CALL_LABEL || DEFAULT_GOOGLE_ADS_CALL_LABEL;
 
 export function conv(kind: 'lead' | 'call', extra?: Record<string, unknown>): void {
   // Meta: Lead / Contact

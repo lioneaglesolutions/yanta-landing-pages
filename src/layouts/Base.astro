@@ -20,9 +20,11 @@ interface Props {
   chrome?: 'landing' | 'corporate' | undefined;
   headerTagline?: string | undefined;
   ogImage?: string | undefined;
+  /** Keep out of search results — e.g. the post-submission thank-you page. */
+  noindex?: boolean | undefined;
 }
 
-const { title, description, chrome = 'landing', headerTagline, ogImage } = Astro.props;
+const { title, description, chrome = 'landing', headerTagline, ogImage, noindex = false } = Astro.props;
 
 const localBusiness = {
   '@context': 'https://schema.org',
@@ -55,6 +57,7 @@ const localBusiness = {
     {/* Marks JS as available before first paint, so progressive enhancements
         (e.g. the collapsible mobile nav) never flash their no-JS state. */}
     <script is:inline>document.documentElement.dataset.js = '1';</script>
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <Seo title={title} description={description} image={ogImage} />
     <JsonLd data={localBusiness} />
     <Analytics />

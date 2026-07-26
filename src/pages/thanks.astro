@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/ui/Section.astro';
+import Button from '../components/ui/Button.astro';
+import { site } from '../content/site';
+
+/**
+ * Confirmation page for submissions made WITHOUT JavaScript: the native POST goes
+ * to Formspree, which redirects here via the form's `_next` field. It fires the
+ * page-load conversion so those enquiries are counted too.
+ *
+ * With JavaScript on, the form never navigates — it swaps in a thank-you panel and
+ * conv('lead') reports the same conversion. So each enquiry is counted exactly once.
+ */
+---
+
+<Base
+  title="Thanks — we've got your enquiry | Yanta"
+  description="Thanks for your enquiry. We'll be in touch shortly."
+  chrome="corporate"
+  noindex
+>
+  <Section>
+    <div class="mx-auto max-w-[640px] py-10 text-center">
+      <div
+        class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green text-[34px] font-extrabold text-white"
+        aria-hidden="true"
+      >
+        ✓
+      </div>
+      <h1 class="mt-6 text-(length:--text-hero) leading-[1.12] font-extrabold tracking-[-0.5px] text-navy">
+        Got it — thanks.
+      </h1>
+      <p class="mt-4 text-[17px] text-muted">
+        Your enquiry is through and we'll be in touch shortly. If it's urgent, ring {site.callName} direct —
+        you'll get a straight answer rather than a call queue.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <Button href={`tel:${site.phone}`}>Call {site.callName} — {site.phoneDisplay}</Button>
+        <Button href="/" variant="navy">Back to home</Button>
+      </div>
+    </div>
+  </Section>
+</Base>
+
+<script>
+  import { conv } from '../lib/track';
+
+  // Page-load conversion for the no-JS submission path. Guarded so a refresh or a
+  // stray visit can't double-count: only the first load in this session reports.
+  const KEY = 'yanta_thanks_conv';
+  try {
+    if (!sessionStorage.getItem(KEY)) {
+      sessionStorage.setItem(KEY, '1');
+      conv('lead', { content_name: 'Enquiry (no-JS submission)' });
+    }
+  } catch {
+    conv('lead', { content_name: 'Enquiry (no-JS submission)' });
+  }
+</script>
