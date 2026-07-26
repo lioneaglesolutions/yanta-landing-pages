@@ -12,6 +12,9 @@ node_modules/
 # vercel
 .vercel/
 
+# local photo dumps (curate into src/assets/img/ before committing)
+photos/
+
 # misc
 .DS_Store
 *.log

@@ -52,7 +52,7 @@ export default definePage({
       points: [
         'No string lines, no batter boards, no spotter in the trench',
         'Fewer passes, less rework, fewer survey checks',
-        'Cut and fill on screen, dig to design first pass',
+        'You supply the base station, corrections and design file — we dig to it',
         'Fuel included — one rate, no surprises',
       ],
     },
@@ -63,8 +63,8 @@ export default definePage({
       blurb: 'If you’ve got an operator who’s run machine control before, take the machine and run it yourself.',
       points: [
         'Daily, weekly and monthly rates',
-        'Delivered, calibrated and demonstrated',
-        'Corrections and design files confirmed before you book',
+        'Delivered and demonstrated',
+        'Your own base station, corrections and design file required',
         'Your own tickets and insurance required',
       ],
     },
@@ -78,8 +78,8 @@ export default definePage({
     { label: 'Machine', value: '14 tonne excavator' },
     { label: 'Machine control', value: 'Trimble Earthworks — semi-automatic 3D grade control' },
     { label: 'Tracks', value: 'Rubber pads — works on concrete, asphalt and pavers without marking them' },
-    { label: 'RTK corrections', value: 'Confirmed in writing for your site when we quote — tell us where the job is' },
-    { label: 'Design files', value: 'Send us your design or survey model when you enquire — we’ll confirm the format and who loads it before you commit' },
+    { label: 'RTK corrections', value: 'Not supplied — you’ll need your own base station or network correction subscription' },
+    { label: 'Design files', value: 'Not supplied — you (or your surveyor) provide and load your own design or survey model' },
     { label: 'Hire options', value: 'Wet hire with a GPS-trained operator, or dry hire' },
     { label: 'Based', value: 'Ridgelands, near Rockhampton — Central Queensland wide' },
   ],
@@ -143,15 +143,15 @@ export default definePage({
   faq: [
     {
       q: 'Do you supply the base station or RTK corrections?',
-      a: 'Trimble Earthworks needs RTK corrections to dig to design, and the right setup depends on the site. Tell us where the job is when you enquire and we’ll confirm the correction arrangement in writing before you book — and if it can’t be made to work on your site, we’ll tell you straight rather than send a machine that can’t hit grade.',
+      a: 'No — we supply the machine with Trimble Earthworks on board, but not the corrections. You’ll need your own base station or a network correction subscription for the machine to dig to design. If you’re not set up for that, say so in the form and we’ll talk it through before you book, rather than discover it on site.',
     },
     {
       q: 'Can you load our design file?',
-      a: 'Someone has to get your design into the machine, so send us what you’ve got when you enquire. We’ll confirm who loads it and that it’s workable before anything’s promised. If it needs a surveyor’s touch first, we’ll tell you up front rather than discover it on site.',
+      a: 'No — you or your surveyor provide and load the design or survey model. Tell us what you’re running when you enquire and we’ll confirm your setup and the machine will talk to each other before anything’s promised.',
     },
     {
-      q: 'What format does the design need to be in?',
-      a: 'Tell us up front what your designer or surveyor has produced and we’ll confirm we can work with it before you commit. If all you’ve got is drawings, say so — “surveyor’s working on it” or “need help with that” in the form is exactly what that question is there for.',
+      q: 'What do we need to have ready?',
+      a: 'Your own base station or network corrections, and a design file or survey model loaded by you or your surveyor. For dry hire, add an operator who’s run machine control, plus your own tickets and insurance. Missing any of that? Pick “need help with that” in the form and we’ll tell you straight what your options are.',
     },
     {
       q: 'Do we need a GPS-trained operator?',
