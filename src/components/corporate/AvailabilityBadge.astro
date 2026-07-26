@@ -14,7 +14,9 @@ const { status } = Astro.props;
  */
 const styles: Record<Availability, { chip: string; dot: string }> = {
   available: { chip: 'bg-green-wash text-[#22662A] border-green', dot: 'bg-green' },
-  'on-hire': { chip: 'bg-[#FFF4E5] text-[#8A5300] border-[#E0A44A]', dot: 'bg-[#E0A44A]' },
+  limited: { chip: 'bg-[#FFF4E5] text-[#8A5300] border-[#E0A44A]', dot: 'bg-[#E0A44A]' },
+  'on-request': { chip: 'bg-[#EEF3FA] text-navy border-[#9BB4D4]', dot: 'bg-navy' },
+  'on-hire': { chip: 'bg-[#FBEDEC] text-[#8C332B] border-[#C9776E]', dot: 'bg-[#B4453C]' },
   service: { chip: 'bg-wash text-muted border-line', dot: 'bg-muted' },
 };
 
