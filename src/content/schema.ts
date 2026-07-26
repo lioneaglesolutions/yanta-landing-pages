@@ -25,7 +25,11 @@ export type FormField = z.infer<typeof formField>;
 
 export const pageContent = z.object({
   slug: z.string(),
-  meta: z.object({ title: z.string().max(65), description: z.string().max(160) }),
+  meta: z.object({
+    // Google truncates around these lengths in search results.
+    title: z.string().max(60),
+    description: z.string().max(160),
+  }),
   /** schema.org Service type for the page's JSON-LD, e.g. "Excavator hire" */
   serviceType: z.string(),
   hero: z.object({

@@ -7,7 +7,7 @@ import { definePage } from '../schema';
 export default definePage({
   slug: 'telehandler-hire',
   meta: {
-    title: '7 Tonne Telehandler Hire — Operator Included | Rockhampton & CQ',
+    title: '7T Telehandler Hire — Operator Included | Rockhampton & CQ',
     description:
       'Most hire telehandlers are 3 tonne. Ours is 7. Portal frames, precast, bulk bags, lifts at height — CN-ticketed operator supplied. Rockhampton & Central QLD.',
   },

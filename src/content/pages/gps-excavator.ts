@@ -8,7 +8,7 @@ import { definePage } from '../schema';
 export default definePage({
   slug: 'gps-excavator-hire',
   meta: {
-    title: 'GPS Excavator Hire — Trimble Earthworks 14T | Rockhampton & CQ',
+    title: 'GPS Excavator Hire — Trimble 14T | Rockhampton & CQ',
     description:
       'Trimble Earthworks 14T excavator for hire in Rockhampton & CQ. Load the design, dig straight to it. Rubber pads — works on finished surfaces. Wet or dry hire.',
   },

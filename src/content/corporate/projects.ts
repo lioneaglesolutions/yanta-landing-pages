@@ -3,6 +3,8 @@
 export interface Project {
   slug: string;
   title: string;
+  /** Shorter title for the <title> tag, which the full one would push past ~60 chars. */
+  metaTitle?: string;
   client: 'Cracow Gold Mine' | 'Talison Lithium' | 'Cracow Gold Mine / Outotec';
   group: 'Cracow Gold Mine' | 'Talison Lithium';
   summary: string;
@@ -16,6 +18,7 @@ export const projects: readonly Project[] = [
   {
     slug: 'talison-bgm-liner',
     title: 'Tailings Dam — Bituminous Geomembrane Liner',
+    metaTitle: 'Tailings Dam BGM Liner',
     client: 'Talison Lithium',
     group: 'Talison Lithium',
     summary: 'Bituminous Geomembrane Liner ES1 & ES3 — 600,000m² of installed BGM.',
@@ -51,6 +54,7 @@ export const projects: readonly Project[] = [
   {
     slug: 'talison-bgm-liner-1265mrl',
     title: 'Tailings Dam — BGM Liner, 1265mRL Raise',
+    metaTitle: 'Tailings Dam BGM Liner, 1265mRL',
     client: 'Talison Lithium',
     group: 'Talison Lithium',
     summary: 'Bituminous Geomembrane Liner ES1 & ES3 — 400,000m² of installed BGM.',
@@ -69,6 +73,7 @@ export const projects: readonly Project[] = [
   {
     slug: 'cracow-tailings-dam',
     title: 'Tailings Dam — HDPE Liner & Poly Pipe',
+    metaTitle: 'Tailings Dam HDPE Liner & Pipe',
     client: 'Cracow Gold Mine',
     group: 'Cracow Gold Mine',
     summary: 'Tailings dam HDPE and poly pipe — pipes delivery and return, pumps, and instrumentation.',
@@ -132,6 +137,7 @@ export const projects: readonly Project[] = [
   {
     slug: 'cracow-hig-mill',
     title: 'High Intensity Grinding (HIG) Mill',
+    metaTitle: 'High Intensity Grinding Mill',
     client: 'Cracow Gold Mine / Outotec',
     group: 'Cracow Gold Mine',
     summary: 'HIG mill construction, installation, commissioning and maintenance.',

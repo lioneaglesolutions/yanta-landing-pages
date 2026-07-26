@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { DEFAULT_GOOGLE_ADS_ID } from './constants';
+import { DEFAULT_FORM_ENDPOINT, DEFAULT_GOOGLE_ADS_ID } from './constants';
 
 /**
  * Build-time env validation — a malformed key fails the build, not production.
@@ -8,7 +8,7 @@ import { DEFAULT_GOOGLE_ADS_ID } from './constants';
  * Formspree account exists — replace it in .env / Vercel before launching ads.
  */
 const envSchema = z.object({
-  PUBLIC_FORM_ENDPOINT: z.url().default('https://formspree.io/f/REPLACE_ME'),
+  PUBLIC_FORM_ENDPOINT: z.url().default(DEFAULT_FORM_ENDPOINT),
   PUBLIC_META_PIXEL_ID: z.string().optional(),
   PUBLIC_GA4_ID: z.string().optional(),
   PUBLIC_GOOGLE_ADS_ID: z.string().default(DEFAULT_GOOGLE_ADS_ID),
@@ -31,7 +31,7 @@ export const env = envSchema.parse({
 
 if (env.PUBLIC_FORM_ENDPOINT.includes('REPLACE_ME')) {
   console.warn(
-    '\n⚠️  PUBLIC_FORM_ENDPOINT is still the placeholder — forms will not deliver leads.' +
-    '\n   Create a Formspree form and set PUBLIC_FORM_ENDPOINT before launching ads.\n',
+    '\n⚠️  PUBLIC_FORM_ENDPOINT is a placeholder — forms will not deliver leads.' +
+    '\n   Run `pnpm formspree:deploy` (needs FORMSPREE_DEPLOY_KEY) or set the env var.\n',
   );
 }

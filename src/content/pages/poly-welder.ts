@@ -4,7 +4,7 @@ import { definePage } from '../schema';
 export default definePage({
   slug: 'poly-welder-hire',
   meta: {
-    title: 'Poly Welder Hire 315–630mm | Butt Fusion | Central QLD — Yanta',
+    title: 'Poly Welder Hire 315–630mm | Butt Fusion | Central QLD',
     description:
       'Tecnodue Bushranger 630 poly welder for hire in Central Queensland. 315–630mm butt fusion. Dry hire, or machine plus PMBWELD-certified welder & weld reports.',
   },

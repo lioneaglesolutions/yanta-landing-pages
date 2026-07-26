@@ -4,7 +4,7 @@ import { definePage } from '../schema';
 export default definePage({
   slug: 'plant-hire',
   meta: {
-    title: 'Excavator & Plant Hire — Rockhampton & Central Queensland | Yanta',
+    title: 'Excavator & Plant Hire — Rockhampton & Central QLD | Yanta',
     description:
       '15T & 35T excavators, telehandler, utes and vans for hire across Central Queensland. Wet or dry hire. Written price in 4 business hours, float included.',
   },

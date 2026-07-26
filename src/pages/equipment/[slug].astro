@@ -17,7 +17,7 @@ const others = featuredEquipment.filter((m) => m.slug !== machine.slug).slice(0,
 
 <Base
   title={`${machine.detailTitle ?? machine.name} — Equipment Hire | Yanta`}
-  description={machine.detail ?? `${machine.name} available for hire from Yanta, Rockhampton and across Central Queensland.`}
+  description={machine.metaDescription ?? `${machine.name} available for hire from Yanta, Rockhampton and across Central Queensland.`}
   chrome="corporate"
 >
   <section class="bg-white py-12">

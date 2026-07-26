@@ -14,7 +14,7 @@ const related = projects.filter((p) => p.slug !== project.slug && p.group === pr
 ---
 
 <Base
-  title={`${project.title} — ${project.group} | Yanta`}
+  title={`${project.metaTitle ?? project.title} — ${project.group} | Yanta`}
   description={`${project.summary} Delivered by Yanta for ${project.client}.`}
   chrome="corporate"
 >

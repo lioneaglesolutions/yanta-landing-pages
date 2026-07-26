@@ -3,12 +3,12 @@ import Base from '../layouts/Base.astro';
 import SectionHeading from '../components/corporate/SectionHeading.astro';
 import SiteImage from '../components/corporate/SiteImage.astro';
 import CtaBand from '../components/corporate/CtaBand.astro';
-import { services, servicesIntro } from '../content/corporate/services';
+import { services, servicesIntro, certifications, peopleStatement } from '../content/corporate/services';
 ---
 
 <Base
   title="Services — Poly Welding, HDPE Piping, Mining & Civil | Yanta"
-  description="Poly welding, HDPE pipe installation, geosynthetic lining, tailings management, plant installation, civil construction and procurement across Queensland and Australia."
+  description="Poly welding, HDPE pipe installation, geosynthetic lining, tailings management, plant installation and civil construction across Queensland and Australia."
   chrome="corporate"
 >
   <section class="bg-white py-16">
@@ -18,6 +18,21 @@ import { services, servicesIntro } from '../content/corporate/services';
         <p>{servicesIntro.lead}</p>
         <p>{servicesIntro.lead2}</p>
       </div>
+    </div>
+  </section>
+
+  <!-- People + certifications: ported from the old site, which listed these on /services -->
+  <section class="bg-navy py-14">
+    <div class="mx-auto grid max-w-[1180px] items-center gap-10 px-5 md:grid-cols-[1.2fr_1fr]">
+      <p class="text-[16.5px] text-[#C7D6E5]">{peopleStatement}</p>
+      <ul class="space-y-3">
+        {certifications.map((cert) => (
+          <li class="flex items-baseline gap-3 border-l-4 border-green bg-white/5 py-3 pl-4">
+            <span class="text-[15px] font-extrabold text-green-light">{cert.standard}</span>
+            <span class="text-[14.5px] text-white">{cert.label}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
