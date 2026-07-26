@@ -12,8 +12,9 @@ node_modules/
 # vercel
 .vercel/
 
-# local photo dumps (curate into src/assets/img/ before committing)
-photos/
+# Raw originals pulled from the old Wix site — hundreds of MB, single files up to
+# 32MB, and re-downloadable. Curated/converted versions are committed alongside.
+photos/**/_raw/
 
 # misc
 .DS_Store
