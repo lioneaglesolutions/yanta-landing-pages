@@ -5,11 +5,21 @@ import { site } from '../../content/site';
 import Section from '../ui/Section.astro';
 
 interface Props {
-  content: PageContent;
+  content?: PageContent | undefined;
+  /** Standalone use (e.g. contact page): pass a form config + page slug directly. */
+  form?: PageContent['form'] | undefined;
+  slug?: string | undefined;
+  /** `bare` drops the surrounding <Section> so the panel can sit inside another layout. */
+  variant?: 'section' | 'bare' | undefined;
 }
 
-const { content } = Astro.props;
-const form = content.form;
+const form = Astro.props.form ?? Astro.props.content?.form;
+const slug = Astro.props.slug ?? Astro.props.content?.slug ?? '';
+const variant = Astro.props.variant ?? 'section';
+if (!form) throw new Error('LeadForm needs either `content` or a `form` prop');
+
+const Wrapper = variant === 'bare' ? Fragment : Section;
+const wrapperProps = variant === 'bare' ? {} : { id: 'quote' };
 
 /** name / phone / company / email render together as a "Your details" block */
 const DETAIL_NAMES = new Set(['name', 'phone', 'company', 'email']);
@@ -23,8 +33,8 @@ const autocompleteFor = (name: string): string | undefined =>
   ({ name: 'name', phone: 'tel', email: 'email', company: 'organization' })[name];
 ---
 
-<Section id="quote">
-  <div class="rounded-[16px] bg-navy px-6 py-7.5 text-white">
+<Wrapper {...wrapperProps}>
+  <div id="quote" class="rounded-[16px] bg-navy px-6 py-7.5 text-white">
     <div id="formpanel">
       <h2 class="text-(length:--text-section) leading-[1.2] font-extrabold tracking-[-0.3px] text-white">{form.heading}</h2>
       <p class="mt-3 max-w-[680px] text-[17px] text-[#C7D6E5]">{form.lead}</p>
@@ -104,7 +114,7 @@ const autocompleteFor = (name: string): string | undefined =>
 
         <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <input type="hidden" name="_subject" value={form.subject} />
-        <input type="hidden" name="page" value={`/${content.slug}`} />
+        <input type="hidden" name="page" value={`/${slug}`} />
         <input type="hidden" name="source" id="src" value="direct" />
 
         <button
@@ -114,7 +124,7 @@ const autocompleteFor = (name: string): string | undefined =>
           {form.submitLabel}
         </button>
         <p class="mt-3.5 text-center text-[12.5px] text-[#9FB4CC]">
-          No obligation. We’ll text you within 5 minutes.<br />
+          {form.fineprint ?? 'No obligation. We’ll text you within 5 minutes.'}<br />
           In a hurry? <a href={`tel:${site.phone}`} class="font-semibold text-white">Just ring {site.callName} on {site.phoneDisplay}</a>.
         </p>
       </form>
@@ -135,7 +145,7 @@ const autocompleteFor = (name: string): string | undefined =>
       </a>
     </div>
   </div>
-</Section>
+</Wrapper>
 
 <script>
   import { getSource } from '../../lib/attribution';

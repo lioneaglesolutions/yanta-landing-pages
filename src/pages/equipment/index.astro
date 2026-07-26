@@ -1,0 +1,80 @@
+---
+import Base from '../../layouts/Base.astro';
+import SectionHeading from '../../components/corporate/SectionHeading.astro';
+import SiteImage from '../../components/corporate/SiteImage.astro';
+import CtaBand from '../../components/corporate/CtaBand.astro';
+import { equipment, equipmentIntro, featuredEquipment } from '../../content/corporate/equipment';
+---
+
+<Base
+  title="Equipment for Hire — Excavators, Loaders, Poly Welder | Yanta"
+  description="Well-maintained machinery for hire: Hitachi excavators 5T–36T, ZW180 loader, Merlo telehandler, Kubota posi track, Tecnodue Bushranger 630 poly welder, trucks and more."
+  chrome="corporate"
+>
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-[1180px] px-5">
+      <SectionHeading as="h1" kicker={equipmentIntro.kicker} heading={equipmentIntro.heading} lead={equipmentIntro.lead} />
+      <p class="mt-4 text-[15.5px] text-muted">
+        Enquiries: <a href={`mailto:${equipmentIntro.hireEmail}`} class="font-bold text-navy underline decoration-green decoration-2 underline-offset-4">{equipmentIntro.hireEmail}</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-wash py-14">
+    <div class="mx-auto max-w-[1180px] px-5">
+      <h2 class="text-[19px] font-extrabold tracking-[1px] text-navy uppercase">Featured machines</h2>
+      <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {featuredEquipment.map((machine) => (
+          <a href={`/equipment/${machine.slug}`} class="group block border border-line bg-white no-underline">
+            <div class="aspect-[4/3] overflow-hidden bg-white">
+              <SiteImage name={machine.image ?? ''} alt={machine.name} class="h-full w-full object-cover" sizes="(min-width: 768px) 380px, 100vw" />
+            </div>
+            <div class="border-t border-line p-5">
+              <p class="text-[12px] font-extrabold tracking-[1.2px] text-green-btn uppercase">{machine.type}</p>
+              <h3 class="mt-1 text-[15.5px] font-extrabold text-navy">{machine.name}</h3>
+              <p class="mt-1 text-[13.5px] text-muted">Rental price available on request</p>
+              <p class="mt-3 text-[13px] font-extrabold tracking-[1px] text-green-btn uppercase group-hover:underline">Learn more →</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-14">
+    <div class="mx-auto max-w-[1180px] px-5">
+      <h2 class="text-[19px] font-extrabold tracking-[1px] text-navy uppercase">Full fleet</h2>
+      <div class="mt-6 overflow-hidden rounded-[6px] border border-line">
+        <table class="w-full border-collapse text-left">
+          <thead>
+            <tr class="bg-navy text-[12.5px] font-extrabold tracking-[1.2px] text-white uppercase">
+              <th scope="col" class="px-4.5 py-3">Machine</th>
+              <th scope="col" class="px-4.5 py-3">Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {equipment.map((machine) => (
+              <tr class="border-b border-line bg-white last:border-b-0 even:bg-wash">
+                <td class="px-4.5 py-3 text-[15px] font-semibold text-navy">
+                  {machine.slug ? (
+                    <a href={`/equipment/${machine.slug}`} class="underline decoration-green decoration-2 underline-offset-4">{machine.name}</a>
+                  ) : (
+                    machine.name
+                  )}
+                </td>
+                <td class="px-4.5 py-3 text-[14.5px] text-muted">{machine.type}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-5 text-[14.5px] text-muted">
+        Rental prices available on request — tell us the job and dates and we’ll come back with a written price.
+        After an excavator, telehandler or the poly welder with full job support? See our dedicated
+        <a href="/plant-hire" class="font-bold text-navy underline decoration-green decoration-2 underline-offset-4">plant hire</a> pages.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand heading="Need a machine on site?" />
+</Base>

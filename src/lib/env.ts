@@ -13,7 +13,7 @@ const envSchema = z.object({
   PUBLIC_GOOGLE_ADS_ID: z.string().optional(),
   PUBLIC_GOOGLE_ADS_LEAD_LABEL: z.string().optional(),
   PUBLIC_GOOGLE_ADS_CALL_LABEL: z.string().optional(),
-  PUBLIC_SITE_URL: z.url().default('https://hire.yanta.com.au'),
+  PUBLIC_SITE_URL: z.url().default('https://www.yanta.com.au'),
   PUBLIC_PHONE: z.string().default('+61429165375'),
 });
 

@@ -2,7 +2,7 @@ import { definePage } from '../schema';
 
 /** `/` — copy ported verbatim from landing-page/index.html */
 export default definePage({
-  slug: '',
+  slug: 'plant-hire',
   meta: {
     title: 'Excavator & Plant Hire — Rockhampton & Central Queensland | Yanta',
     description:

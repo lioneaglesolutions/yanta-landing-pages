@@ -9,16 +9,20 @@ import Analytics from '../components/analytics/Analytics.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import MobileCallBar from '../components/layout/MobileCallBar.astro';
+import CorpHeader from '../components/corporate/CorpHeader.astro';
+import CorpFooter from '../components/corporate/CorpFooter.astro';
 import { site } from '../content/site';
 
 interface Props {
   title: string;
   description: string;
+  /** 'landing' = campaign chrome (navy header, call bar, no nav). 'corporate' = main site chrome. */
+  chrome?: 'landing' | 'corporate' | undefined;
   headerTagline?: string | undefined;
   ogImage?: string | undefined;
 }
 
-const { title, description, headerTagline, ogImage } = Astro.props;
+const { title, description, chrome = 'landing', headerTagline, ogImage } = Astro.props;
 
 const localBusiness = {
   '@context': 'https://schema.org',
@@ -52,12 +56,12 @@ const localBusiness = {
     <JsonLd data={localBusiness} />
     <Analytics />
   </head>
-  <body class="bg-white pb-[58px] text-navy antialiased md:pb-0">
-    <Header tagline={headerTagline} />
+  <body class={`bg-white text-navy antialiased ${chrome === 'landing' ? 'pb-[58px] md:pb-0' : ''}`}>
+    {chrome === 'landing' ? <Header tagline={headerTagline} /> : <CorpHeader />}
     <main>
       <slot />
     </main>
-    <Footer />
-    <MobileCallBar />
+    {chrome === 'landing' ? <Footer /> : <CorpFooter />}
+    {chrome === 'landing' && <MobileCallBar />}
   </body>
 </html>

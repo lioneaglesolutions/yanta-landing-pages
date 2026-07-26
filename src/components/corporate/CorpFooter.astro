@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import { site } from '../../content/site';
+import CallLink from '../ui/CallLink.astro';
+import logo from '../../assets/img/site/logo.png';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t-4 border-green bg-white">
+  <div class="mx-auto grid max-w-[1180px] gap-8 px-5 py-10 md:grid-cols-[1.3fr_1fr_1fr]">
+    <div>
+      <Image src={logo} alt="Yanta — Mining, Industrial, Construction" width={168} densities={[1, 2]} class="h-auto w-[136px]" />
+      <p class="mt-4 max-w-[380px] text-sm text-muted">{site.footerCta}</p>
+    </div>
+    <div>
+      <p class="text-[12.5px] font-extrabold tracking-[1.2px] text-navy uppercase">Contact</p>
+      <ul class="mt-3 space-y-1.5 text-[15px]">
+        <li class="font-bold text-navy">{site.owners}</li>
+        <li><CallLink class="font-semibold text-navy no-underline hover:text-green-btn" /></li>
+        <li><a href={`mailto:${site.email}`} class="font-semibold text-navy no-underline hover:text-green-btn">{site.email}</a></li>
+        <li class="text-muted">Ridgelands, near Rockhampton QLD</li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-[12.5px] font-extrabold tracking-[1.2px] text-navy uppercase">Explore</p>
+      <ul class="mt-3 space-y-1.5 text-[15px]">
+        {site.nav.map((item) => (
+          <li><a href={item.href} class="font-semibold text-navy no-underline hover:text-green-btn">{item.label}</a></li>
+        ))}
+        <li><a href="/yanta-capability-statement.pdf" class="font-semibold text-navy no-underline hover:text-green-btn">Capability statement (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bg-navy-deep">
+    <div class="mx-auto flex max-w-[1180px] flex-wrap items-center justify-between gap-2 px-5 py-4 text-[12.5px] text-[#9FB4CC]">
+      <span>© {year} Yanta. All rights reserved.</span>
+      <a href="/privacy" class="font-bold text-white no-underline">Privacy policy</a>
+    </div>
+  </div>
+</footer>

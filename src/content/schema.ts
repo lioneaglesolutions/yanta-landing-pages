@@ -75,6 +75,8 @@ export const pageContent = z.object({
     subject: z.string(),
     fields: z.array(formField),
     submitLabel: z.string(),
+    /** Small print under the submit button. Defaults to the landing-page promise. */
+    fineprint: z.string().optional(),
     thanks: z.object({ heading: z.string(), body: z.string() }),
   }),
   faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(),

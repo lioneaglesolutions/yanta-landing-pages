@@ -1,0 +1,100 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHeading from '../components/corporate/SectionHeading.astro';
+import PhotoBand from '../components/corporate/PhotoBand.astro';
+import CtaBand from '../components/corporate/CtaBand.astro';
+
+const whyChooseUs = [
+  { title: 'Expertise & Experience', body: 'With decades of experience, Yanta delivers advanced solutions to complex projects.' },
+  { title: 'Innovation & Safety', body: 'Implementing new technologies while prioritising a safe workplace.' },
+  { title: 'Quality & Reliability', body: 'Ensuring projects meet high standards in every aspect of performance.' },
+  { title: 'Sustainability', body: 'Committed to minimising environmental impact and building a better future.' },
+];
+
+const whatWeDo = [
+  { title: 'Mining', body: 'We provide expert support for operations, ensuring environmental responsibility while maintaining operational efficiency.' },
+  { title: 'Industrial Solutions', body: 'Delivering infrastructure and plant installations, including ongoing maintenance services.' },
+  { title: 'Construction', body: 'Specialising in civil works, earthworks, equipment, and structural infrastructure development projects.' },
+];
+---
+
+<Base
+  title="About Yanta — 30+ Years in Mining, Industrial & Construction"
+  description="Yanta delivers end-to-end solutions for large-scale mining, industrial and construction projects across Australia — geosynthetic lining, civil construction and HDPE piping."
+  chrome="corporate"
+>
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-[1180px] px-5">
+      <SectionHeading as="h1" kicker="About" heading="Solutions Across Mining, Industrial & Construction" />
+      <div class="mt-7 grid max-w-[1020px] gap-6 text-[16.5px] text-muted md:grid-cols-2">
+        <p>
+          At Yanta, we deliver end-to-end solutions for large-scale mining, industrial, and construction projects
+          across Australia. With over 30 years of proven experience, we’ve built a reputation as a trusted partner in
+          the delivery of high-value, technically complex projects.
+        </p>
+        <p>
+          Our expertise spans geosynthetic lining systems, civil construction, and HDPE piping — providing integrated
+          design, supply, and installation services that ensure performance, safety, and efficiency at every stage.
+          From tender through to practical completion, Yanta combines technical precision with operational excellence
+          to drive project success and long-term value for our clients.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <PhotoBand image="pipe-stockpile" alt="HDPE pipe stockpile on a pipeline right-of-way" />
+
+  <!-- Mission -->
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-[1180px] px-5">
+      <div class="border-l-8 border-green bg-navy p-8 md:p-12">
+        <h2 class="text-(length:--text-section) leading-[1.2] font-extrabold tracking-[-0.3px] text-white">Our Mission</h2>
+        <p class="mt-5 max-w-[820px] text-[16.5px] text-[#C7D6E5]">
+          At Yanta, our mission is to deliver mining and construction solutions that set new benchmarks for safety,
+          quality, innovation, and reliability. We tackle complex challenges with precision and efficiency — ensuring
+          every project is completed safely, on time, within budget, and to the highest industry standards.
+        </p>
+        <p class="mt-4 max-w-[820px] text-[16.5px] text-[#C7D6E5]">
+          We are committed to providing professional excellence and lasting value for our clients, consistently
+          exceeding expectations across every stage of the project lifecycle.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why choose us -->
+  <section class="bg-wash py-16">
+    <div class="mx-auto max-w-[1180px] px-5">
+      <SectionHeading kicker="Why Choose Us" heading="Commitment to Safety, Quality & Sustainability" />
+      <div class="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {whyChooseUs.map((item, i) => (
+          <div class="border-t-4 border-green bg-white p-6">
+            <p class="text-[13px] font-extrabold text-line" aria-hidden="true">{String(i + 1).padStart(2, '0')}</p>
+            <h3 class="mt-2 text-[14.5px] font-extrabold tracking-[1px] text-navy uppercase">{item.title}</h3>
+            <p class="mt-2.5 text-[14.5px] text-muted">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PhotoBand image="pipe-unload" alt="Crane truck unloading pipe on a mine haul road" />
+
+  <!-- What we do -->
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-[1180px] px-5">
+      <SectionHeading kicker="What We Do" heading="Mining Solutions for Sustainable Development" />
+      <div class="mt-9 grid gap-5 md:grid-cols-3">
+        {whatWeDo.map((item) => (
+          <div class="border border-line bg-white p-7">
+            <h3 class="text-[15px] font-extrabold tracking-[1px] text-navy uppercase">{item.title}</h3>
+            <div class="mt-3 h-1 w-10 bg-green"></div>
+            <p class="mt-4 text-[15px] text-muted">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Ready to Build the Future Together?" />
+</Base>

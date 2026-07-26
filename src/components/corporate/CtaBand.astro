@@ -1,0 +1,26 @@
+---
+import { site } from '../../content/site';
+import Button from '../ui/Button.astro';
+
+interface Props {
+  heading?: string | undefined;
+}
+
+const { heading = 'Ready to have your next project started?' } = Astro.props;
+---
+
+<section class="border-t-8 border-green bg-navy">
+  <div class="mx-auto max-w-[1180px] px-5 py-14">
+    <div class="max-w-[720px]">
+      <h2 class="text-(length:--text-section) leading-[1.2] font-extrabold tracking-[-0.3px] text-white">{heading}</h2>
+      <p class="mt-4 text-[16.5px] text-[#C7D6E5]">
+        At Yanta, we believe every project is an opportunity to create lasting value. Whether it’s powering mining
+        operations, streamlining industrial processes, or delivering reliable construction solutions.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <Button href="/contact">Contact us today</Button>
+        <Button href={`tel:${site.phone}`} variant="ghost">Call {site.callName} — {site.phoneDisplay}</Button>
+      </div>
+    </div>
+  </div>
+</section>

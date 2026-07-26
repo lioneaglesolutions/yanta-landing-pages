@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import LeadForm from '../components/sections/LeadForm.astro';
+import PhotoBand from '../components/corporate/PhotoBand.astro';
+import CallLink from '../components/ui/CallLink.astro';
+import { contactForm } from '../content/corporate/contact-form';
+import { equipmentIntro } from '../content/corporate/equipment';
+import { site } from '../content/site';
+---
+
+<Base
+  title="Contact Yanta — Rockhampton, Central Queensland"
+  description="Connect with Yanta. Ian & Kate Mooring, 0429 165 375, admin@yanta.com.au. Based at Ridgelands near Rockhampton, working across Queensland and Australia."
+  chrome="corporate"
+>
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-[1180px] px-5">
+      <div class="grid gap-12 md:grid-cols-[1fr_1.1fr]">
+        <div>
+          <p class="text-[12.5px] font-extrabold tracking-[2px] text-green-btn uppercase">Contact</p>
+          <h1 class="mt-2 text-(length:--text-hero) leading-[1.12] font-extrabold tracking-[-0.5px] text-navy">
+            Get in Touch
+          </h1>
+          <div class="mt-4 h-1 w-12 bg-green"></div>
+          <p class="mt-6 max-w-[520px] text-[16.5px] text-muted">
+            Connect with Yanta today. Our team will respond quickly to ensure your enquiry is handled with the
+            professionalism and efficiency we’re known for.
+          </p>
+
+          <dl class="mt-9 space-y-6">
+            <div>
+              <dt class="text-[12px] font-extrabold tracking-[1.5px] text-muted uppercase">Phone</dt>
+              <dd class="mt-1 text-[19px] font-extrabold">
+                <CallLink class="text-navy no-underline hover:text-green-btn">+61 429 165 375</CallLink>
+              </dd>
+            </div>
+            <div>
+              <dt class="text-[12px] font-extrabold tracking-[1.5px] text-muted uppercase">General enquiries</dt>
+              <dd class="mt-1 text-[17px] font-bold">
+                <a href={`mailto:${site.email}`} class="text-navy no-underline hover:text-green-btn">{site.email}</a>
+              </dd>
+            </div>
+            <div>
+              <dt class="text-[12px] font-extrabold tracking-[1.5px] text-muted uppercase">Equipment hire</dt>
+              <dd class="mt-1 text-[17px] font-bold">
+                <a href={`mailto:${equipmentIntro.hireEmail}`} class="text-navy no-underline hover:text-green-btn">{equipmentIntro.hireEmail}</a>
+              </dd>
+            </div>
+            <div>
+              <dt class="text-[12px] font-extrabold tracking-[1.5px] text-muted uppercase">Based</dt>
+              <dd class="mt-1 text-[16px] text-navy">Ridgelands, near Rockhampton, Queensland</dd>
+              <dd class="text-[15px] text-muted">Working across Queensland and Australia</dd>
+            </div>
+            <div>
+              <dt class="text-[12px] font-extrabold tracking-[1.5px] text-muted uppercase">Who you’ll speak to</dt>
+              <dd class="mt-1 text-[16px] text-navy">{site.owners}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div>
+          <LeadForm form={contactForm} slug="contact" variant="bare" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PhotoBand image="gantry-dusk" alt="Pipe gantry on a Central Queensland site at dusk" />
+</Base>

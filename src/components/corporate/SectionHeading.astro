@@ -1,0 +1,29 @@
+---
+export interface Props {
+  kicker?: string | undefined;
+  heading: string;
+  lead?: string | undefined;
+  light?: boolean | undefined;
+  center?: boolean | undefined;
+  /** Use h1 for the page's primary heading; h2 elsewhere. */
+  as?: 'h1' | 'h2' | undefined;
+}
+
+const { kicker, heading, lead, light = false, center = false, as = 'h2' } = Astro.props;
+
+const headingClass = [
+  'mt-2 font-extrabold tracking-[-0.3px]',
+  as === 'h1' ? 'text-(length:--text-hero) leading-[1.12]' : 'text-(length:--text-section) leading-[1.2]',
+  light ? 'text-white' : 'text-navy',
+].join(' ');
+---
+
+<div class={center ? 'mx-auto max-w-[760px] text-center' : 'max-w-[760px]'}>
+  {kicker && (
+    <p class={`text-[12.5px] font-extrabold tracking-[2px] uppercase ${light ? 'text-green-light' : 'text-green-btn'}`}>
+      {kicker}
+    </p>
+  )}
+  {as === 'h1' ? <h1 class={headingClass}>{heading}</h1> : <h2 class={headingClass}>{heading}</h2>}
+  {lead && <p class={`mt-4 text-[16.5px] ${light ? 'text-[#C7D6E5]' : 'text-muted'}`}>{lead}</p>}
+</div>
