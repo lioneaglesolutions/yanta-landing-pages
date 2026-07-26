@@ -1,0 +1,79 @@
+---
+import AvailabilityBadge from './AvailabilityBadge.astro';
+import { fleet, FLEET_REVIEWED, availabilityLabels } from '../../content/corporate/fleet';
+import type { Availability } from '../../content/corporate/fleet';
+
+/** Counts per status, for the summary line above the table. */
+const counts = fleet
+  .flatMap((c) => c.units)
+  .reduce<Record<string, number>>((acc, u) => {
+    acc[u.availability] = (acc[u.availability] ?? 0) + 1;
+    return acc;
+  }, {});
+const statuses = Object.keys(availabilityLabels) as Availability[];
+---
+
+<div>
+  <div class="flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-line pb-4">
+    {statuses.filter((s) => counts[s]).map((s) => (
+      <span class="flex items-center gap-2 text-[13.5px] text-muted">
+        <AvailabilityBadge status={s} />
+        <span class="font-semibold text-navy">{counts[s]}</span>
+      </span>
+    ))}
+    <span class="text-[13px] text-muted">Availability reviewed {FLEET_REVIEWED}</span>
+  </div>
+
+  {fleet.map((category) => (
+    <section class="mt-9" id={category.slug}>
+      <h3 class="text-[15px] font-extrabold tracking-[1.2px] text-navy uppercase">{category.title}</h3>
+      <div class="mt-3 h-1 w-10 bg-green"></div>
+
+      <!-- Cards on small screens: a 4-column table can't degrade gracefully at 320px -->
+      <ul class="mt-4 grid gap-3 md:hidden">
+        {category.units.map((unit) => (
+          <li class="rounded-[6px] border border-line bg-white p-4">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <p class="text-[11.5px] font-extrabold tracking-[1px] text-muted uppercase">{unit.id}</p>
+                <p class="mt-0.5 text-[15px] font-extrabold text-navy">
+                  {unit.href ? <a href={unit.href} class="underline decoration-green decoration-2 underline-offset-4">{unit.type}</a> : unit.type}
+                </p>
+              </div>
+              <AvailabilityBadge status={unit.availability} />
+            </div>
+            <p class="mt-2 text-[14px] text-muted">{unit.description}</p>
+            {unit.usage && <p class="mt-1.5 text-[13px] text-muted">{unit.usage}</p>}
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-4 hidden overflow-hidden rounded-[6px] border border-line md:block">
+        <table class="w-full border-collapse text-left">
+          <thead>
+            <tr class="bg-navy text-[11.5px] font-extrabold tracking-[1.2px] text-white uppercase">
+              <th scope="col" class="w-[110px] px-4 py-2.5">Unit</th>
+              <th scope="col" class="w-[210px] px-4 py-2.5">Type</th>
+              <th scope="col" class="px-4 py-2.5">Description</th>
+              <th scope="col" class="w-[110px] px-4 py-2.5 whitespace-nowrap">Hours / km</th>
+              <th scope="col" class="w-[140px] px-4 py-2.5">Availability</th>
+            </tr>
+          </thead>
+          <tbody>
+            {category.units.map((unit) => (
+              <tr class="border-b border-line bg-white last:border-b-0 even:bg-wash">
+                <td class="px-4 py-3 align-top text-[13px] font-bold tracking-[0.5px] text-muted uppercase">{unit.id}</td>
+                <td class="px-4 py-3 align-top text-[14.5px] font-semibold text-navy">
+                  {unit.href ? <a href={unit.href} class="underline decoration-green decoration-2 underline-offset-4">{unit.type}</a> : unit.type}
+                </td>
+                <td class="px-4 py-3 align-top text-[14.5px] text-muted">{unit.description}</td>
+                <td class="px-4 py-3 align-top text-[14px] whitespace-nowrap text-muted">{unit.usage ?? '—'}</td>
+                <td class="px-4 py-3 align-top"><AvailabilityBadge status={unit.availability} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))}
+</div>

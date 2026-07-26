@@ -1,0 +1,29 @@
+---
+import type { Availability } from '../../content/corporate/fleet';
+import { availabilityLabels } from '../../content/corporate/fleet';
+
+interface Props {
+  status: Availability;
+}
+
+const { status } = Astro.props;
+
+/**
+ * Colour is a secondary cue only — the label is always present, so the status is
+ * still readable for colour-blind users and in print.
+ */
+const styles: Record<Availability, { chip: string; dot: string }> = {
+  available: { chip: 'bg-green-wash text-[#22662A] border-green', dot: 'bg-green' },
+  'on-hire': { chip: 'bg-[#FFF4E5] text-[#8A5300] border-[#E0A44A]', dot: 'bg-[#E0A44A]' },
+  service: { chip: 'bg-wash text-muted border-line', dot: 'bg-muted' },
+};
+
+const s = styles[status];
+---
+
+<span
+  class={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-[11.5px] font-extrabold tracking-[0.4px] uppercase ${s.chip}`}
+>
+  <span class={`h-2 w-2 shrink-0 rounded-full ${s.dot}`} aria-hidden="true"></span>
+  {availabilityLabels[status]}
+</span>
