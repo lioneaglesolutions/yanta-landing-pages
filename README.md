@@ -48,8 +48,41 @@ pieces in `src/components/corporate/`. `Base.astro` switches chrome via the `chr
 Photography lives in `src/assets/img/site/` and is referenced by basename (`SiteImage`,
 `PhotoBand`) — Astro generates AVIF/WebP at build.
 
-Zero client JavaScript except the analytics tags and a small form-enhancement script
-(~1.2KB gzipped total). Forms work with JavaScript disabled via native POST.
+Zero client JavaScript except the analytics tags, a small form-enhancement script and the
+mobile nav toggle (~1.5KB gzipped total). Everything works with JavaScript disabled: forms
+fall back to a native POST, and the nav simply stays expanded instead of collapsing.
+
+## Forms
+
+Every form on the site — the four landing pages and `/contact` — is the same component
+(`src/components/sections/LeadForm.astro`) driven by a typed config, and all of them POST to
+one endpoint: `PUBLIC_FORM_ENDPOINT`.
+
+**Right now that endpoint is a placeholder** (`https://formspree.io/f/REPLACE_ME`) so nothing
+is delivered. The build prints a warning while it's unset. To go live: create a form at
+formspree.io, then set `PUBLIC_FORM_ENDPOINT` in the Vercel project's environment variables
+and redeploy. No code change — the action is read from the env var at build.
+
+Each submission carries, besides the visible answers:
+
+| Field | Purpose |
+|---|---|
+| `_subject` | Per-form subject line so the inbox is scannable (e.g. `NEW GPS EXCAVATOR ENQUIRY`) |
+| `page` | Which page the enquiry came from |
+| `source` | `utm_*` / `gclid` / `fbclid` captured on first visit, so you know which ad produced the lead |
+| `_gotcha` | Honeypot — bots fill it, humans can't see it. Formspree silently drops those |
+
+With JavaScript on, submitting runs a `fetch`, swaps in the thank-you panel without a page
+load, and fires the `lead` conversion to Meta/GA4/Google Ads. With JavaScript off, the browser
+does a normal POST and Formspree shows its own confirmation page. If the request fails, the
+user still sees the thank-you plus a prominent "ring Ian direct" line, and no conversion is
+recorded (the lead didn't actually arrive).
+
+Configure Formspree to notify **two** addresses, one of which pushes to a phone —
+speed-to-lead is the highest-correlation variable in the whole campaign. Note the free tier
+caps at 50 submissions/month; if that binds, swap the endpoint for a Vercel function
+(`src/pages/api/lead.ts` with `export const prerender = false`) sending via Resend. That's a
+one-line env change on the front end.
 
 ## Develop
 
