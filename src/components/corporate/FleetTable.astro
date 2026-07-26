@@ -42,6 +42,14 @@ const statuses = Object.keys(availabilityLabels) as Availability[];
               </div>
               <AvailabilityBadge status={unit.availability} />
             </div>
+            {unit.highDemand && (
+              <p class="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                <span class="rounded-[3px] bg-navy px-2 py-0.5 text-[10.5px] font-extrabold tracking-[1px] text-green-light uppercase">
+                  In high demand
+                </span>
+                {unit.demandNote && <span class="text-[13px] font-semibold text-navy">{unit.demandNote}</span>}
+              </p>
+            )}
             <p class="mt-2 text-[14px] text-muted">{unit.description}</p>
             {unit.usage && <p class="mt-1.5 text-[13px] text-muted">{unit.usage}</p>}
           </li>
@@ -65,8 +73,18 @@ const statuses = Object.keys(availabilityLabels) as Availability[];
                 <td class="px-4 py-3 align-top text-[13px] font-bold tracking-[0.5px] text-muted uppercase">{unit.id}</td>
                 <td class="px-4 py-3 align-top text-[14.5px] font-semibold text-navy">
                   {unit.href ? <a href={unit.href} class="underline decoration-green decoration-2 underline-offset-4">{unit.type}</a> : unit.type}
+                  {unit.highDemand && (
+                    <span class="mt-1.5 block w-fit rounded-[3px] bg-navy px-2 py-0.5 text-[10.5px] font-extrabold tracking-[1px] text-green-light uppercase">
+                      In high demand
+                    </span>
+                  )}
                 </td>
-                <td class="px-4 py-3 align-top text-[14.5px] text-muted">{unit.description}</td>
+                <td class="px-4 py-3 align-top text-[14.5px] text-muted">
+                  {unit.description}
+                  {unit.demandNote && (
+                    <span class="mt-1 block text-[13px] font-semibold text-navy">{unit.demandNote}</span>
+                  )}
+                </td>
                 <td class="px-4 py-3 align-top text-[14px] whitespace-nowrap text-muted">{unit.usage ?? '—'}</td>
                 <td class="px-4 py-3 align-top"><AvailabilityBadge status={unit.availability} /></td>
               </tr>
