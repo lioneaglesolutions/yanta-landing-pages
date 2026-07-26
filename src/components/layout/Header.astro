@@ -1,0 +1,26 @@
+---
+import { site } from '../../content/site';
+import CallLink from '../ui/CallLink.astro';
+
+interface Props {
+  /** Small line under the brand, e.g. "POLY WELDING · ROCKHAMPTON" */
+  tagline?: string | undefined;
+}
+
+const { tagline = site.tagline } = Astro.props;
+---
+
+<header class="sticky top-0 z-50 border-b-4 border-green bg-navy">
+  <div class="mx-auto flex max-w-[1080px] items-center justify-between gap-3 px-5 py-3">
+    <a href="/" class="flex items-center gap-2.5 text-white no-underline">
+      <span>
+        <b class="text-[23px] font-extrabold tracking-[3px]">YANTA</b>
+        <span class="-mt-px block text-[10px] tracking-[1.6px] text-[#9FB4CC]">{tagline}</span>
+      </span>
+    </a>
+    <CallLink class="whitespace-nowrap rounded-[10px] bg-green-btn px-4 py-2.5 text-[15px] font-extrabold text-white no-underline">
+      <small class="hidden text-[10px] font-bold tracking-[0.8px] opacity-85 sm:block">CALL {site.callName.toUpperCase()}</small>
+      {site.phoneDisplay}
+    </CallLink>
+  </div>
+</header>

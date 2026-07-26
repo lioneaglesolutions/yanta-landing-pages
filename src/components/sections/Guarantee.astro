@@ -1,0 +1,22 @@
+---
+import type { PageContent } from '../../content/schema';
+import Section from '../ui/Section.astro';
+
+interface Props {
+  content: PageContent;
+}
+
+const { content } = Astro.props;
+const guarantee = content.guarantee;
+---
+
+{guarantee && (
+  <Section>
+    <div class="rounded-[14px] border-l-8 border-green bg-navy px-7 py-8 text-white">
+      <p class="text-[clamp(21px,3.6vw,30px)] leading-[1.25] font-extrabold">
+        {`${guarantee.headline} `}<em class="text-green-light not-italic">{guarantee.emphasis}</em>
+      </p>
+      <p class="mt-3.5 max-w-[640px] text-[#C7D6E5]">{guarantee.body}</p>
+    </div>
+  </Section>
+)}

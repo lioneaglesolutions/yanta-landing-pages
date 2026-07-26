@@ -1,0 +1,10 @@
+---
+/** JSON-LD helper — always JSON.stringify an object, never hand-write JSON in a template. */
+interface Props {
+  data: Record<string, unknown>;
+}
+
+const { data } = Astro.props;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(data)} is:inline />

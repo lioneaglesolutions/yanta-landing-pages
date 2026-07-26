@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excavator &amp; Plant Hire — Rockhampton &amp; Central Queensland | Yanta</title>
+<meta name="description" content="15T &amp; 35T excavators, telehandler, utes and vans for hire across Central Queensland. Wet or dry hire. Written price back within 4 business hours, float included.">
+
+<!-- ============================================================
+     BRAND COLOURS sampled from yanta.com.au:
+       navy   #002B5C   (headings, header, dark panels)
+       green  #41AD49   (accent, badges, ticks)
+       green  #2F9139   (buttons — slightly deeper so white text is legible)
+       muted  #406085
+       font   Montserrat
+     All set as CSS variables in :root below — change once, changes everywhere.
+
+     BEFORE YOU DEPLOY — 4 THINGS (each takes 2 minutes)
+     ============================================================
+     1. META PIXEL — replace YOUR_PIXEL_ID below (2 places).
+        Events Manager > Data Sources > your pixel.
+
+     2. FORM ENDPOINT — replace YOUR_FORMSPREE_ID in the <form action>.
+        formspree.io > free plan > New Form > copy the ID.
+        Send notifications to admin@yanta.com.au AND an inbox that
+        pushes to a phone.
+
+     3. PRICES — search for [$X] and put real numbers in. Under
+        Australian Consumer Law a "from" price must be genuinely
+        achievable for the scope described. Delete the packages
+        section entirely if you'd rather not commit to numbers yet.
+
+     4. PHOTOS — search for PHOTO: and drop your own images into /img.
+        Do NOT use stock photography.
+
+     DEPLOY: npx vercel  →  npx vercel --prod
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'YOUR_PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+<!-- /PIXEL -->
+
+<style>
+:root{
+  /* ---- Yanta brand ---- */
+  --navy:#002B5C;
+  --navy-2:#013A78;
+  --navy-deep:#001B3A;
+  --green:#41AD49;
+  --green-btn:#2F9139;
+  --green-wash:#EEF8EF;
+  --muted:#406085;
+  --paper:#ffffff;
+  --wash:#F3F6FA;
+  --line:#DCE4ED;
+  --r:10px;
+  --max:1080px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font:400 16px/1.65 Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--navy);background:var(--paper);
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:4px solid var(--green)}
+.hbar{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  max-width:var(--max);margin:0 auto;padding:12px 20px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+.brand b{font-size:23px;letter-spacing:3px;font-weight:800}
+.brand span{font-size:10px;letter-spacing:1.6px;color:#9FB4CC;display:block;margin-top:-1px}
+.callbtn{background:var(--green-btn);color:#fff;text-decoration:none;font-weight:800;
+  padding:11px 16px;border-radius:var(--r);font-size:15px;white-space:nowrap}
+.callbtn small{display:block;font-size:10px;font-weight:700;letter-spacing:.8px;opacity:.85}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;color:#fff;overflow:hidden;
+  /* PHOTO: hero background — 35T low angle, bucket loaded, blue sky.
+     Replace the second gradient with: url('img/hero-35t.jpg') center/cover */
+  background-image:
+    linear-gradient(180deg,rgba(0,27,58,.74),rgba(0,27,58,.93)),
+    linear-gradient(135deg,#0B4788,#001B3A);
+}
+.hero .wrap{padding:58px 20px 50px}
+.eyebrow{display:inline-block;background:var(--green);color:#fff;
+  font-size:11.5px;font-weight:800;letter-spacing:1.5px;padding:6px 11px;border-radius:5px;
+  margin-bottom:18px;text-transform:uppercase}
+h1{font-size:clamp(30px,6vw,50px);line-height:1.1;font-weight:800;letter-spacing:-.5px}
+.hero p.sub{font-size:clamp(16px,2.4vw,19px);color:#D3E0EE;margin-top:16px;max-width:640px}
+.hero p.sub b{color:#fff;font-weight:700}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;text-decoration:none;font-weight:800;font-size:17px;
+  padding:16px 26px;border-radius:var(--r);border:2px solid transparent;cursor:pointer}
+.btn-hi{background:var(--green-btn);color:#fff}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.hero .fineprint{margin-top:16px;font-size:13px;color:#9FB4CC}
+
+/* ---------- trust bar ---------- */
+.trust{background:var(--wash);border-bottom:1px solid var(--line)}
+.trust ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 26px;
+  padding:16px 20px;max-width:var(--max);margin:0 auto;font-size:13.5px;font-weight:600;color:var(--navy)}
+.trust li{display:flex;align-items:center;gap:7px}
+.tick{color:var(--green);font-weight:800;font-size:15px}
+
+/* ---------- sections ---------- */
+section{padding:54px 0}
+section.tint{background:var(--wash)}
+h2{font-size:clamp(24px,4vw,34px);line-height:1.2;font-weight:800;letter-spacing:-.3px;color:var(--navy)}
+h2+p.lead{color:var(--muted);margin-top:12px;max-width:680px;font-size:17px}
+h3{font-size:19px;font-weight:800;margin-bottom:6px;color:var(--navy)}
+
+/* ---------- guarantee ---------- */
+.guar{background:var(--navy);color:#fff;border-radius:14px;padding:32px 28px;
+  border-left:8px solid var(--green)}
+.guar .big{font-size:clamp(21px,3.6vw,30px);font-weight:800;line-height:1.25}
+.guar .big em{color:#7FD187;font-style:normal}
+.guar p{color:#C7D6E5;margin-top:14px;max-width:640px}
+
+/* ---------- cards ---------- */
+.grid{display:grid;gap:18px;margin-top:30px}
+@media(min-width:700px){.grid.c2{grid-template-columns:1fr 1fr}}
+@media(min-width:700px){.grid.c3{grid-template-columns:repeat(3,1fr)}}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  display:flex;flex-direction:column}
+.card .ph{aspect-ratio:16/10;background:linear-gradient(135deg,#7C99BB,#002B5C);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:800;letter-spacing:1px;font-size:13px;text-align:center;padding:12px}
+.card .body{padding:18px 18px 20px}
+.card ul{list-style:none;margin:10px 0 0;font-size:14.5px;color:var(--muted)}
+.card ul li{padding-left:16px;position:relative;margin-bottom:3px}
+.card ul li:before{content:"▪";position:absolute;left:3px;color:var(--green);font-size:11px}
+.tag{display:inline-block;background:var(--green-wash);border:1px solid var(--green);
+  font-size:11.5px;font-weight:800;letter-spacing:.6px;padding:4px 9px;
+  border-radius:20px;text-transform:uppercase;color:#2A7C31;margin-top:12px}
+
+/* ---------- pricing explainer ---------- */
+.pricebox{background:#fff;border:2px solid var(--navy);border-radius:14px;padding:30px 26px}
+.pricebox ol{margin:18px 0 0 20px;font-size:16px;color:var(--navy)}
+.pricebox ol li{margin-bottom:10px}
+.pricebox ol li::marker{color:var(--green);font-weight:800}
+.promise{margin-top:22px;padding:18px 20px;background:var(--green-wash);
+  border-left:5px solid var(--green);border-radius:8px;font-weight:600;font-size:17px;color:var(--navy)}
+
+/* ---------- packages ---------- */
+.pkg{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;
+  border-top:4px solid var(--green)}
+.pkg .price{font-size:26px;font-weight:800;margin:8px 0 4px;color:var(--navy)}
+.pkg .price small{font-size:13px;font-weight:600;color:var(--muted);display:block;margin-top:2px}
+.pkg p{font-size:14.5px;color:var(--muted)}
+
+/* ---------- form ---------- */
+.formwrap{background:var(--navy);color:#fff;border-radius:16px;padding:30px 24px}
+.formwrap h2{color:#fff}
+.formwrap .lead{color:#C7D6E5}
+form{margin-top:24px}
+fieldset{border:0;margin:0 0 20px}
+legend,label.q{display:block;font-weight:700;font-size:15px;margin-bottom:9px;color:#fff}
+.opts{display:grid;gap:8px}
+@media(min-width:620px){.opts.two{grid-template-columns:1fr 1fr}}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;width:0;height:0}
+.opt span{display:block;padding:13px 15px;border:2px solid #2C5384;border-radius:9px;
+  background:#013A78;cursor:pointer;font-size:15px;font-weight:600;
+  transition:border-color .12s,background .12s}
+.opt input:checked+span{border-color:var(--green);background:#0A5C3A}
+.opt input:focus-visible+span{outline:3px solid var(--green);outline-offset:2px}
+input[type=text],input[type=tel],input[type=email],textarea{
+  width:100%;padding:14px 15px;border:2px solid #2C5384;border-radius:9px;
+  background:#013A78;color:#fff;font:inherit;font-size:16px}
+input::placeholder,textarea::placeholder{color:#8FAAC8}
+input:focus,textarea:focus{outline:none;border-color:var(--green)}
+textarea{min-height:86px;resize:vertical}
+.two-up{display:grid;gap:14px}
+@media(min-width:620px){.two-up{grid-template-columns:1fr 1fr}}
+.submit{width:100%;background:var(--green-btn);color:#fff;border:0;border-radius:10px;
+  padding:18px;font-size:18px;font-weight:800;cursor:pointer;font-family:inherit}
+.submit:hover{filter:brightness(1.08)}
+.formfine{font-size:12.5px;color:#9FB4CC;margin-top:14px;text-align:center}
+.formfine a{color:#fff;font-weight:600}
+.err{color:#FFC2C2;font-size:13px;margin-top:8px;display:none}
+
+/* ---------- thank you ---------- */
+#thanks{display:none;text-align:center;padding:20px 0}
+#thanks .mark{width:64px;height:64px;margin:0 auto;border-radius:50%;background:var(--green);
+  color:#fff;font-size:34px;font-weight:800;display:flex;align-items:center;justify-content:center}
+#thanks h2{margin:16px 0 10px;color:#fff}
+#thanks p{color:#C7D6E5;max-width:460px;margin:0 auto 22px}
+
+/* ---------- faq ---------- */
+details{background:#fff;border:1px solid var(--line);border-radius:10px;
+  padding:16px 18px;margin-bottom:10px}
+details[open]{border-color:var(--green)}
+summary{font-weight:700;cursor:pointer;font-size:16px;list-style:none;color:var(--navy)}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";float:right;font-weight:800;color:var(--green);font-size:20px;line-height:1}
+details[open] summary:after{content:"–"}
+details p{margin-top:11px;color:var(--muted);font-size:15px}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy-deep);color:#9FB4CC;padding:40px 0 30px;font-size:14px}
+footer a{color:#fff;text-decoration:none;font-weight:700}
+footer .cols{display:grid;gap:22px}
+@media(min-width:700px){footer .cols{grid-template-columns:1.2fr 1fr}}
+footer .legal{margin-top:26px;padding-top:18px;border-top:1px solid #12365F;font-size:12.5px}
+
+/* sticky mobile call bar */
+.mobilecall{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;
+  background:var(--green-btn);padding:14px;text-align:center;font-weight:800;
+  text-decoration:none;color:#fff;font-size:17px;box-shadow:0 -3px 14px rgba(0,27,58,.25)}
+@media(max-width:640px){
+  .mobilecall{display:block}
+  body{padding-bottom:58px}
+  .callbtn small{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hbar">
+    <a class="brand" href="#top">
+      <!-- PHOTO: swap for <img src="img/yanta-logo.png" alt="Yanta" height="40"> -->
+      <div><b>YANTA</b><span>PLANT HIRE · ROCKHAMPTON</span></div>
+    </a>
+    <a class="callbtn" href="tel:+61429165375" onclick="track('Contact')">
+      <small>CALL IAN</small>0429 165 375
+    </a>
+  </div>
+</header>
+
+<a class="mobilecall" href="tel:+61429165375" onclick="track('Contact')">Call Ian — 0429 165 375</a>
+
+<!-- ================= HERO ================= -->
+<div class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow">Rockhampton &amp; Central Queensland</span>
+    <h1>Excavators, telehandlers and vehicles for hire.</h1>
+    <p class="sub">
+      15 tonne and 35 tonne excavators, telehandler, utes and vans.
+      <b>Wet hire or dry hire</b> — you choose. Tell us the job and you'll have a
+      <b>written price back within 4 business hours</b>, float included.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-hi" href="#quote">Get my price &amp; availability</a>
+      <a class="btn btn-ghost" href="tel:+61429165375" onclick="track('Contact')">Call Ian now</a>
+    </div>
+    <p class="fineprint">Family owned · 30+ years in Central Queensland · Ian &amp; Kate Mooring</p>
+  </div>
+</div>
+
+<!-- ================= TRUST BAR ================= -->
+<div class="trust">
+  <ul>
+    <li><span class="tick">✓</span> 30+ years' experience</li>
+    <li><span class="tick">✓</span> Family owned, Rockhampton based</li>
+    <li><span class="tick">✓</span> BYDA Safety Partner</li>
+    <li><span class="tick">✓</span> Mine-site experienced</li>
+    <li><span class="tick">✓</span> Insured &amp; fully maintained</li>
+    <li><span class="tick">✓</span> Wet or dry hire</li>
+  </ul>
+</div>
+
+<!-- ================= GUARANTEE ================= -->
+<section>
+  <div class="wrap">
+    <div class="guar">
+      <div class="big">On site when we say — <em>or the float's free.</em></div>
+      <p>
+        If we're not there inside the window we agreed, you don't pay the float. In writing, on every quote.
+        And every machine goes out serviced with a written condition report, so you're never
+        paying for someone else's damage.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FLEET ================= -->
+<section class="tint">
+  <div class="wrap">
+    <h2>What we've got, and what it's for</h2>
+    <p class="lead">Not sure which machine suits your job? Send us a photo in the form below —
+      we'll tell you straight, and we'll tell you if you don't need us.</p>
+
+    <div class="grid c2">
+      <div class="card">
+        <!-- PHOTO: 15T working, dirt in the air -->
+        <div class="ph">PHOTO — 15 TONNE EXCAVATOR</div>
+        <div class="body">
+          <h3>15 Tonne Excavator</h3>
+          <ul>
+            <li>House and shed pads</li>
+            <li>Dams, drainage and trenching</li>
+            <li>Driveways and access tracks</li>
+            <li>Land and fenceline clearing</li>
+          </ul>
+          <span class="tag">Wet or dry hire</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <!-- PHOTO: 35T low angle from ground level, bucket raised -->
+        <div class="ph">PHOTO — 35 TONNE EXCAVATOR</div>
+        <div class="body">
+          <h3>35 Tonne Excavator</h3>
+          <ul>
+            <li>Bulk earthworks and civil</li>
+            <li>Mining and industrial sites</li>
+            <li>Large dam construction</li>
+            <li>Demolition and rock work</li>
+          </ul>
+          <span class="tag">Wet or dry hire</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <!-- PHOTO: telehandler with a load lifted -->
+        <div class="ph">PHOTO — TELEHANDLER</div>
+        <div class="body">
+          <h3>Telehandler</h3>
+          <ul>
+            <li>Shed and steel erection</li>
+            <li>Materials handling on site</li>
+            <li>Awkward, high or heavy lifts</li>
+          </ul>
+          <span class="tag">Dry hire · daily, weekly, monthly</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <!-- PHOTO: utes and vans lined up — one clean fleet shot -->
+        <div class="ph">PHOTO — UTES, VANS &amp; VEHICLES</div>
+        <div class="body">
+          <h3>Utes, Vans &amp; Vehicles</h3>
+          <ul>
+            <li>Site vehicles and crew transport</li>
+            <li>Short term or long term</li>
+            <li>Project-length hire welcome</li>
+          </ul>
+          <span class="tag">Weekly &amp; monthly rates</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING EXPLAINER — the differentiator ================= -->
+<section>
+  <div class="wrap">
+    <div class="pricebox">
+      <h2>Why we don't publish one price</h2>
+      <p class="lead">Every other hire company writes "price on application" and leaves you guessing.
+        Here's the actual answer instead.</p>
+      <p style="margin-top:18px">Hire rates move with three things:</p>
+      <ol>
+        <li><b>Whether you need an operator.</b> Wet hire includes the machine, an experienced
+          operator and fuel. Dry hire is the machine only — you'll need your own tickets and insurance.</li>
+        <li><b>How far we float the machine.</b> Getting a 35 tonne out to Marlborough costs more
+          than dropping a 15 tonne at Gracemere. We include it in the quoted price rather than
+          adding it to the invoice later.</li>
+        <li><b>How long you need it.</b> Weekly and monthly rates are substantially cheaper per day
+          than a single day's hire.</li>
+      </ol>
+      <p style="margin-top:18px">A 15 tonne on a week's dry hire is a completely different number to
+        a 35 tonne wet for two days two hours away. Any single headline rate we published would be
+        wrong for almost everybody.</p>
+      <div class="promise">
+        So here's what we do instead: tell us the job, and we'll send you a written price —
+        float, fuel and minimum hours all included — within 4 business hours. No surprises on the invoice.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PACKAGES — delete this section if you'd rather not name prices ================= -->
+<section class="tint">
+  <div class="wrap">
+    <h2>Fixed-price jobs for rural blocks</h2>
+    <p class="lead">For the common jobs, we can give you a price up front. Machine, operator,
+      fuel and float all included.</p>
+    <div class="grid c3">
+      <div class="pkg">
+        <h3>Dam clean-out</h3>
+        <div class="price">from [$X]<small>machine, operator, fuel &amp; float included</small></div>
+        <p>Desilt, reshape the batters and spread the spoil. Best done before the wet.</p>
+      </div>
+      <div class="pkg">
+        <h3>House or shed pad</h3>
+        <div class="price">from [$X]<small>machine, operator, fuel &amp; float included</small></div>
+        <p>Strip, cut, fill, level and compact to your footprint, ready for the builder.</p>
+      </div>
+      <div class="pkg">
+        <h3>Fenceline &amp; firebreak clearing</h3>
+        <div class="price">from [$X]<small>per kilometre</small></div>
+        <p>Push and windrow. Get it done before fire season rather than during it.</p>
+      </div>
+    </div>
+    <p style="margin-top:20px;font-size:14px;color:var(--muted)">
+      Prices are a starting point for a standard job and depend on access, ground conditions and
+      distance. We'll confirm in writing before anything starts.
+    </p>
+  </div>
+</section>
+
+<!-- ================= FORM ================= -->
+<section id="quote">
+  <div class="wrap">
+    <div class="formwrap">
+
+      <div id="formpanel">
+        <h2>Tell us about the job</h2>
+        <p class="lead">Takes about 30 seconds. We'll text you within 5 minutes and have a written
+          price to you within 4 business hours.</p>
+
+        <!-- FORM ENDPOINT: replace YOUR_FORMSPREE_ID -->
+        <form id="leadform" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+
+          <fieldset>
+            <legend>1. What do you need?</legend>
+            <div class="opts two">
+              <label class="opt"><input type="radio" name="machine" value="15T excavator" required><span>15 tonne excavator</span></label>
+              <label class="opt"><input type="radio" name="machine" value="35T excavator"><span>35 tonne excavator</span></label>
+              <label class="opt"><input type="radio" name="machine" value="Telehandler"><span>Telehandler</span></label>
+              <label class="opt"><input type="radio" name="machine" value="Ute / van / vehicle"><span>Ute, van or vehicle</span></label>
+              <label class="opt"><input type="radio" name="machine" value="Not sure - needs advice"><span>Not sure — need advice</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>2. Do you need an operator?</legend>
+            <div class="opts two">
+              <label class="opt"><input type="radio" name="hire_type" value="Wet hire - operator included" required><span>Yes — bring an operator</span></label>
+              <label class="opt"><input type="radio" name="hire_type" value="Dry hire"><span>No — dry hire</span></label>
+              <label class="opt"><input type="radio" name="hire_type" value="Not sure"><span>Not sure yet</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>3. When do you need it?</legend>
+            <div class="opts two">
+              <label class="opt"><input type="radio" name="timing" value="This week" required><span>This week</span></label>
+              <label class="opt"><input type="radio" name="timing" value="Next 2 weeks"><span>Next 2 weeks</span></label>
+              <label class="opt"><input type="radio" name="timing" value="This month"><span>This month</span></label>
+              <label class="opt"><input type="radio" name="timing" value="Just getting pricing"><span>Just getting pricing</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>4. How long for?</legend>
+            <div class="opts two">
+              <label class="opt"><input type="radio" name="duration" value="1-2 days" required><span>1–2 days</span></label>
+              <label class="opt"><input type="radio" name="duration" value="About a week"><span>About a week</span></label>
+              <label class="opt"><input type="radio" name="duration" value="2-4 weeks"><span>2–4 weeks</span></label>
+              <label class="opt"><input type="radio" name="duration" value="A month or more"><span>A month or more</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <label class="q" for="location">5. Where's the job?</label>
+            <input type="text" id="location" name="location" placeholder="Town or suburb — e.g. Gracemere" required>
+          </fieldset>
+
+          <fieldset>
+            <label class="q" for="details">6. Briefly, what's the job? <span style="font-weight:500;color:#9FB4CC">(optional)</span></label>
+            <textarea id="details" name="details" placeholder="e.g. Dam's silted up, about 30m across. Truck access is OK."></textarea>
+          </fieldset>
+
+          <fieldset>
+            <label class="q">Your details</label>
+            <div class="two-up" style="margin-bottom:14px">
+              <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
+              <input type="tel" name="phone" placeholder="Mobile number" autocomplete="tel" required>
+            </div>
+            <input type="email" name="email" placeholder="Email (optional)" autocomplete="email">
+          </fieldset>
+
+          <!-- spam honeypot -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_subject" value="NEW YANTA HIRE LEAD">
+          <input type="hidden" name="source" id="src" value="">
+
+          <button type="submit" class="submit">Get my written price →</button>
+          <p class="err" id="err">Something went wrong sending that. Please ring Ian on 0429 165 375.</p>
+          <p class="formfine">
+            No obligation. We'll text you within 5 minutes.<br>
+            In a hurry? <a href="tel:+61429165375">Just ring Ian on 0429 165 375</a>.
+          </p>
+        </form>
+      </div>
+
+      <div id="thanks">
+        <div class="mark">✓</div>
+        <h2>Got it — thanks.</h2>
+        <p>We'll text you within 5 minutes and have a written price across to you
+          within 4 business hours.</p>
+        <a class="btn btn-hi" href="tel:+61429165375" onclick="track('Contact')">Don't want to wait? Call Ian now</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="tint">
+  <div class="wrap">
+    <h2>Questions we get asked</h2>
+    <div style="margin-top:26px">
+      <details>
+        <summary>Do I need a licence or ticket to hire a machine?</summary>
+        <p>For dry hire, yes — you'll need the appropriate tickets and your own insurance, and we'll
+        check both before the machine leaves. If you haven't got them, go wet hire instead: we bring
+        an experienced operator and fuel, and you don't need anything. For most acreage owners that's
+        the easier and safer option, and often the cheaper one because the job gets done faster.</p>
+      </details>
+      <details>
+        <summary>How far do you travel?</summary>
+        <p>We're based near Rockhampton and regularly work across Central Queensland — Gracemere,
+        Yeppoon, Mount Morgan, Marlborough, Gladstone, Emerald and out west. Float cost is built
+        into the quoted price so you know the real number before you commit. Further afield is
+        usually still fine for longer hires — just ask.</p>
+      </details>
+      <details>
+        <summary>What's the minimum hire?</summary>
+        <p>Generally one day for excavators, but it depends on the machine and how far we're
+        floating it. We'll spell out the minimum in your written quote rather than surprising you
+        with it on the invoice.</p>
+      </details>
+      <details>
+        <summary>Is the float included or extra?</summary>
+        <p>Included in the price we quote you, both ways. This is the number one thing people get
+        stung on in plant hire, so we build it in from the start.</p>
+      </details>
+      <details>
+        <summary>How quickly can you get a machine to me?</summary>
+        <p>Often within a day or two, sometimes same day, depending on what's already out. Tell us
+        when you need it and we'll give you a straight answer rather than stringing you along.</p>
+      </details>
+      <details>
+        <summary>What happens if it rains?</summary>
+        <p>On wet hire, if the site's unworkable we'd rather reschedule than burn your money. For
+        longer dry hires we can talk about a standby rate for days you can't work. Say the word
+        when you're booking.</p>
+      </details>
+      <details>
+        <summary>I don't know what size machine I need.</summary>
+        <p>Pick "not sure — need advice" in the form and describe the job, or send us a photo.
+        Thirty years in, we can usually tell you in one look — including if a smaller machine and an
+        extra day works out cheaper for you. We'll also tell you if you don't need us at all.</p>
+      </details>
+      <details>
+        <summary>Are you insured?</summary>
+        <p>Yes — public liability and plant insurance, and we're a BYDA Safety Partner with
+        mine-site experience. Happy to send certificates of currency and our capability statement
+        if you need them for a site induction.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap cols">
+    <div>
+      <div style="color:#fff;font-weight:800;font-size:21px;letter-spacing:3px">YANTA</div>
+      <p style="margin-top:10px">
+        Plant hire, civil and construction services across Central Queensland.
+        Family owned and operated. 30+ years' experience.
+      </p>
+    </div>
+    <div>
+      <p style="color:#fff;font-weight:700;margin-bottom:8px">Ian &amp; Kate Mooring</p>
+      <p><a href="tel:+61429165375">0429 165 375</a></p>
+      <p><a href="mailto:admin@yanta.com.au">admin@yanta.com.au</a></p>
+      <p><a href="https://www.yanta.com.au">yanta.com.au</a></p>
+    </div>
+  </div>
+  <div class="wrap legal">
+    © <span id="yr">2026</span> Yanta. All prices exclude GST unless stated. "From" prices are a
+    starting point for a standard job and vary with access, ground conditions and distance.
+    <a href="/privacy.html">Privacy policy</a>
+    <!-- Meta requires a reachable privacy policy URL for lead ads. Create privacy.html. -->
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Pixel helper — safe if the pixel isn't installed yet
+function track(ev, data){ try{ if(window.fbq) fbq('track', ev, data||{}); }catch(e){} }
+
+// Stamp the traffic source so you can tell ad leads from organic in your inbox
+(function(){
+  var p = new URLSearchParams(location.search);
+  var s = [p.get('utm_source'), p.get('utm_campaign'), p.get('utm_content'),
+           p.get('fbclid') ? 'fb-click' : ''].filter(Boolean).join(' | ');
+  document.getElementById('src').value = s || 'direct';
+})();
+
+// Form submit — AJAX so we can show the thank-you state in place and fire the Lead event
+var form = document.getElementById('leadform');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  var btn = form.querySelector('.submit');
+  var err = document.getElementById('err');
+  err.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  }).then(function(r){
+    if(!r.ok) throw new Error('bad response');
+    track('Lead', { content_name: 'Plant hire enquiry' });
+    document.getElementById('formpanel').style.display = 'none';
+    document.getElementById('thanks').style.display = 'block';
+    document.getElementById('quote').scrollIntoView({ behavior:'smooth', block:'center' });
+  }).catch(function(){
+    err.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Get my written price →';
+  });
+});
+</script>
+
+</body>
+</html>

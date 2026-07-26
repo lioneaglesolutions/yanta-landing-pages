@@ -1,0 +1,17 @@
+---
+import { site } from '../../content/site';
+
+/**
+ * tel: link — the call conversion fires via one delegated listener in
+ * Analytics.astro, so this stays a plain anchor.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<a href={`tel:${site.phone}`} class={className}>
+  <slot>{site.phoneDisplay}</slot>
+</a>

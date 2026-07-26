@@ -1,0 +1,22 @@
+---
+interface Props {
+  href: string;
+  variant?: 'hi' | 'ghost' | 'navy';
+  class?: string;
+}
+
+const { href, variant = 'hi', class: className = '' } = Astro.props;
+
+const variants = {
+  hi: 'bg-green-btn text-white hover:brightness-110',
+  ghost: 'bg-transparent text-white border-white/50',
+  navy: 'bg-navy text-white hover:brightness-110',
+} as const;
+---
+
+<a
+  href={href}
+  class={`inline-block rounded-[10px] border-2 border-transparent px-6 py-4 text-[17px] font-extrabold no-underline ${variants[variant]} ${className}`}
+>
+  <slot />
+</a>

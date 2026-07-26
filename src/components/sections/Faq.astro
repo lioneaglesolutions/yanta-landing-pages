@@ -1,0 +1,41 @@
+---
+import type { PageContent } from '../../content/schema';
+import Section from '../ui/Section.astro';
+import JsonLd from '../seo/JsonLd.astro';
+
+interface Props {
+  content: PageContent;
+}
+
+const { content } = Astro.props;
+const faq = content.faq ?? [];
+const heading = content.faqIntro?.heading ?? 'Questions we get asked';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<Section tint>
+  <h2 class="text-(length:--text-section) leading-[1.2] font-extrabold tracking-[-0.3px] text-navy">{heading}</h2>
+  <div class="mt-6">
+    {faq.map((item) => (
+      <details class="group mb-2.5 rounded-[10px] border border-line bg-white px-4.5 py-4 open:border-green">
+        <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-base font-bold text-navy [&::-webkit-details-marker]:hidden">
+          {item.q}
+          <span class="text-xl leading-none font-extrabold text-green group-open:hidden" aria-hidden="true">+</span>
+          <span class="hidden text-xl leading-none font-extrabold text-green group-open:inline" aria-hidden="true">–</span>
+        </summary>
+        <p class="mt-3 text-[15px] text-muted">{item.a}</p>
+      </details>
+    ))}
+  </div>
+</Section>
+
+{faq.length > 0 && <JsonLd data={faqSchema} />}

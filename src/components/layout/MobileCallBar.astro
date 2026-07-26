@@ -1,0 +1,10 @@
+---
+import { site } from '../../content/site';
+import CallLink from '../ui/CallLink.astro';
+---
+
+<CallLink
+  class="fixed inset-x-0 bottom-0 z-60 block bg-green-btn p-3.5 text-center text-[17px] font-extrabold text-white no-underline shadow-[0_-3px_14px_rgba(0,27,58,0.25)] md:hidden"
+>
+  Call {site.callName} — {site.phoneDisplay}
+</CallLink>

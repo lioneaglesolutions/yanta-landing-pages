@@ -1,0 +1,26 @@
+---
+import { site } from '../../content/site';
+import CallLink from '../ui/CallLink.astro';
+
+const year = new Date().getFullYear();
+const legal = site.footerLegal.replace('%YEAR%', String(year));
+---
+
+<footer class="bg-navy-deep px-0 pt-10 pb-8 text-sm text-[#9FB4CC]">
+  <div class="mx-auto grid max-w-[1080px] gap-6 px-5 md:grid-cols-[1.2fr_1fr]">
+    <div>
+      <div class="text-[21px] font-extrabold tracking-[3px] text-white">YANTA</div>
+      <p class="mt-2.5">{site.footerBlurb}</p>
+    </div>
+    <div>
+      <p class="mb-2 font-bold text-white">{site.owners}</p>
+      <p><CallLink class="font-bold text-white no-underline" /></p>
+      <p><a href={`mailto:${site.email}`} class="font-bold text-white no-underline">{site.email}</a></p>
+      <p><a href={site.website} class="font-bold text-white no-underline">yanta.com.au</a></p>
+    </div>
+  </div>
+  <div class="mx-auto mt-6 max-w-[1080px] border-t border-[#12365F] px-5 pt-4 text-[12.5px]">
+    {legal}
+    <a href="/privacy" class="font-bold text-white no-underline">Privacy policy</a>
+  </div>
+</footer>

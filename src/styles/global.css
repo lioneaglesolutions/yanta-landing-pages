@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  /* brand — sampled from yanta.com.au */
+  --color-navy:        #002B5C;   /* header, headlines, dark panels */
+  --color-navy-2:      #013A78;   /* form field backgrounds */
+  --color-navy-deep:   #001B3A;   /* footer */
+  --color-green:       #41AD49;   /* accent: badges, ticks, rules */
+  --color-green-btn:   #2F9139;   /* buttons — white text needs the darker one */
+  --color-green-wash:  #EEF8EF;
+  --color-green-light: #7FD187;   /* highlight on navy */
+  --color-muted:       #406085;   /* body copy on white */
+  --color-wash:        #F3F6FA;   /* alt section background */
+  --color-line:        #DCE4ED;   /* borders */
+
+  --font-sans: "Montserrat Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --text-hero:    clamp(28px, 5.6vw, 48px);
+  --text-section: clamp(23px, 3.8vw, 33px);
+
+  --radius-card: 0.75rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-navy);
+  line-height: 1.65;
+}
+
+/* focus-visible rings everywhere — never remove an outline without a replacement */
+:where(a, button, input, textarea, select, summary):focus-visible {
+  outline: 3px solid var(--color-green);
+  outline-offset: 2px;
+}

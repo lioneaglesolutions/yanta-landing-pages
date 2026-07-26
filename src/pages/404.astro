@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/ui/Section.astro';
+import Button from '../components/ui/Button.astro';
+import { site } from '../content/site';
+---
+
+<Base
+  title="Page not found | Yanta"
+  description="That page doesn't exist. Excavator, telehandler and poly welder hire across Central Queensland."
+>
+  <Section>
+    <div class="mx-auto max-w-[640px] py-10 text-center">
+      <p class="text-[13px] font-extrabold tracking-[1.5px] text-green uppercase">404</p>
+      <h1 class="mt-2 text-(length:--text-hero) leading-[1.1] font-extrabold tracking-[-0.5px] text-navy">
+        That page doesn’t exist.
+      </h1>
+      <p class="mt-4 text-[17px] text-muted">
+        The machines do, though. Head back to the start, or ring {site.callName} on {site.phoneDisplay}.
+      </p>
+      <div class="mt-7 flex flex-wrap justify-center gap-3">
+        <Button href="/">Back to plant hire</Button>
+        <Button href={`tel:${site.phone}`} variant="navy">Call {site.callName} now</Button>
+      </div>
+    </div>
+  </Section>
+</Base>

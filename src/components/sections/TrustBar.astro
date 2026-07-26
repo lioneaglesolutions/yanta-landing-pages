@@ -1,0 +1,21 @@
+---
+import type { PageContent } from '../../content/schema';
+
+interface Props {
+  content: PageContent;
+}
+
+const { content } = Astro.props;
+const items = content.trust ?? [];
+---
+
+<div class="border-b border-line bg-wash">
+  <ul class="mx-auto flex max-w-[1080px] list-none flex-wrap gap-x-6 gap-y-2 px-5 py-4 text-[13.5px] font-semibold text-navy">
+    {items.map((item) => (
+      <li class="flex items-center gap-2">
+        <span class="text-[15px] font-extrabold text-green" aria-hidden="true">✓</span>
+        {item}
+      </li>
+    ))}
+  </ul>
+</div>

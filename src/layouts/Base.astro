@@ -1,0 +1,63 @@
+---
+import '@fontsource-variable/montserrat';
+import '../styles/global.css';
+import montserratWoff2 from '@fontsource-variable/montserrat/files/montserrat-latin-wght-normal.woff2?url';
+
+import Seo from '../components/seo/Seo.astro';
+import JsonLd from '../components/seo/JsonLd.astro';
+import Analytics from '../components/analytics/Analytics.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import MobileCallBar from '../components/layout/MobileCallBar.astro';
+import { site } from '../content/site';
+
+interface Props {
+  title: string;
+  description: string;
+  headerTagline?: string | undefined;
+  ogImage?: string | undefined;
+}
+
+const { title, description, headerTagline, ogImage } = Astro.props;
+
+const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: site.name,
+  telephone: site.phone,
+  email: site.email,
+  url: site.url,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: site.address.locality,
+    addressRegion: site.address.region,
+    addressCountry: site.address.country,
+  },
+  areaServed: site.areaServed.map((name) => ({ '@type': 'Place', name })),
+  openingHours: 'Mo-Fr 06:00-18:00',
+  founder: site.owners,
+  sameAs: [site.website],
+};
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preload" as="font" type="font/woff2" href={montserratWoff2} crossorigin />
+    <Seo title={title} description={description} image={ogImage} />
+    <JsonLd data={localBusiness} />
+    <Analytics />
+  </head>
+  <body class="bg-white pb-[58px] text-navy antialiased md:pb-0">
+    <Header tagline={headerTagline} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <MobileCallBar />
+  </body>
+</html>

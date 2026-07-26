@@ -1,0 +1,60 @@
+---
+import { env } from '../../lib/env';
+
+/**
+ * All three tags, included once from Base.astro. The bootstraps are is:inline so
+ * Astro doesn't bundle and defer them; each renders only when its ID is configured.
+ * GA4 and Google Ads share one gtag.js load.
+ */
+const pixelId = env.PUBLIC_META_PIXEL_ID;
+const ga4Id = env.PUBLIC_GA4_ID;
+const adsId = env.PUBLIC_GOOGLE_ADS_ID;
+const gtagId = ga4Id ?? adsId;
+---
+
+{pixelId && (
+  <script is:inline define:vars={{ pixelId }}>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', pixelId);
+    fbq('track', 'PageView');
+  </script>
+)}
+{pixelId && (
+  <noscript>
+    <img
+      height="1"
+      width="1"
+      style="display:none"
+      src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
+      alt=""
+    />
+  </noscript>
+)}
+
+{gtagId && <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`}></script>}
+{gtagId && (
+  <script is:inline define:vars={{ ga4Id, adsId }}>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    if (ga4Id) gtag('config', ga4Id);
+    if (adsId) gtag('config', adsId);
+  </script>
+)}
+
+<script>
+  import { captureAttribution } from '../../lib/attribution';
+  import { conv } from '../../lib/track';
+
+  captureAttribution();
+
+  // Tap-to-call: one delegated listener for every tel: link on the page.
+  document.addEventListener('click', (e) => {
+    const target = e.target instanceof Element ? e.target.closest('a[href^="tel:"]') : null;
+    if (target) conv('call');
+  });
+</script>

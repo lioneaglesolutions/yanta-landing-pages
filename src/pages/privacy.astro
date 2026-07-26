@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/ui/Section.astro';
+import CallLink from '../components/ui/CallLink.astro';
+import { site } from '../content/site';
+---
+
+<Base
+  title="Privacy Policy | Yanta"
+  description="How Yanta collects, uses and stores the information you give us when you enquire about plant hire or poly welding."
+>
+  <Section>
+    <div class="prose-yanta mx-auto max-w-[760px]">
+      <h1 class="text-(length:--text-hero) leading-[1.1] font-extrabold tracking-[-0.5px] text-navy">Privacy policy</h1>
+      <p class="mt-4 text-muted">
+        Yanta ({site.owners}) operates this website. We're a family plant hire and civil business based near
+        Rockhampton, Queensland, and we handle your information in line with the Australian Privacy Act 1988
+        and the Australian Privacy Principles.
+      </p>
+
+      <h2 class="mt-8 text-(length:--text-section) font-extrabold text-navy">What we collect</h2>
+      <p class="mt-3 text-muted">
+        When you submit an enquiry form we collect what you type in: your name, phone number, email address,
+        company (if given), the job location and the details of the machine or service you're asking about.
+        We also record which page you enquired from and, if you arrived from an ad, basic campaign information
+        (such as UTM tags or click identifiers) so we know which advertising works.
+      </p>
+      <p class="mt-3 text-muted">
+        Like most websites, we use analytics and advertising tags (Google Analytics, Google Ads and Meta Pixel)
+        that collect standard usage data such as pages viewed and approximate location. These tools use cookies
+        or similar identifiers. You can limit them with your browser settings or ad preferences on those platforms.
+      </p>
+
+      <h2 class="mt-8 text-(length:--text-section) font-extrabold text-navy">Why we collect it</h2>
+      <p class="mt-3 text-muted">
+        One reason: to respond to your enquiry with a quote and organise the hire or job you asked about.
+        Campaign information is used only to measure our own advertising. We don't sell your information,
+        rent it out, or use it for anything unrelated to your enquiry.
+      </p>
+
+      <h2 class="mt-8 text-(length:--text-section) font-extrabold text-navy">Who handles it</h2>
+      <p class="mt-3 text-muted">
+        Form submissions are delivered to us by our form provider and arrive as email to our business inboxes.
+        Analytics and advertising data is processed by Google and Meta under their own privacy policies.
+        Beyond those service providers, your details stay with us.
+      </p>
+
+      <h2 class="mt-8 text-(length:--text-section) font-extrabold text-navy">Retention and deletion</h2>
+      <p class="mt-3 text-muted">
+        We keep enquiry details for as long as needed to handle the job and our business records, and no longer.
+        If you'd like the information you've sent us corrected or deleted, contact us and we'll do it —
+        email <a href={`mailto:${site.email}`} class="font-semibold text-navy underline">{site.email}</a> or
+        ring <CallLink class="font-semibold text-navy underline" /> and ask.
+      </p>
+
+      <h2 class="mt-8 text-(length:--text-section) font-extrabold text-navy">Contact</h2>
+      <p class="mt-3 text-muted">
+        Questions or concerns about privacy: {site.owners}, Yanta —
+        <a href={`mailto:${site.email}`} class="font-semibold text-navy underline">{site.email}</a>,
+        <CallLink class="font-semibold text-navy underline" />. If you're not satisfied with our response,
+        you can contact the Office of the Australian Information Commissioner (oaic.gov.au).
+      </p>
+    </div>
+  </Section>
+</Base>

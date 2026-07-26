@@ -1,0 +1,186 @@
+---
+import type { FormField, PageContent } from '../../content/schema';
+import { env } from '../../lib/env';
+import { site } from '../../content/site';
+import Section from '../ui/Section.astro';
+
+interface Props {
+  content: PageContent;
+}
+
+const { content } = Astro.props;
+const form = content.form;
+
+/** name / phone / company / email render together as a "Your details" block */
+const DETAIL_NAMES = new Set(['name', 'phone', 'company', 'email']);
+const mainFields = form.fields.filter((f) => !DETAIL_NAMES.has(f.name));
+const detailFields = form.fields.filter((f) => DETAIL_NAMES.has(f.name));
+
+const inputClasses =
+  'w-full rounded-[9px] border-2 border-[#2C5384] bg-navy-2 px-4 py-3.5 text-base text-white placeholder:text-[#8FAAC8] focus:border-green focus:outline-none';
+
+const autocompleteFor = (name: string): string | undefined =>
+  ({ name: 'name', phone: 'tel', email: 'email', company: 'organization' })[name];
+---
+
+<Section id="quote">
+  <div class="rounded-[16px] bg-navy px-6 py-7.5 text-white">
+    <div id="formpanel">
+      <h2 class="text-(length:--text-section) leading-[1.2] font-extrabold tracking-[-0.3px] text-white">{form.heading}</h2>
+      <p class="mt-3 max-w-[680px] text-[17px] text-[#C7D6E5]">{form.lead}</p>
+
+      <form id="leadform" action={env.PUBLIC_FORM_ENDPOINT} method="POST" class="mt-6">
+        {mainFields.map((field: FormField) => (
+          <fieldset class="mb-5 border-0">
+            {field.kind === 'radio' ? (
+              <>
+                <legend class="mb-2 block text-[15px] font-bold text-white">{field.label}</legend>
+                <div class={`grid gap-2 ${field.columns === 2 ? 'sm:grid-cols-2' : ''}`}>
+                  {field.options.map((option, i) => (
+                    <label class="relative">
+                      <input
+                        type="radio"
+                        name={field.name}
+                        value={option}
+                        required={field.required && i === 0}
+                        class="peer sr-only"
+                      />
+                      <span class="block cursor-pointer rounded-[9px] border-2 border-[#2C5384] bg-navy-2 px-4 py-3 text-[15px] font-semibold transition-colors peer-checked:border-green peer-checked:bg-[#0A5C3A] peer-focus-visible:outline-3 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-green">
+                        {option}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </>
+            ) : field.kind === 'textarea' ? (
+              <>
+                <label for={`f-${field.name}`} class="mb-2 block text-[15px] font-bold text-white">{field.label}</label>
+                <textarea
+                  id={`f-${field.name}`}
+                  name={field.name}
+                  placeholder={field.placeholder}
+                  required={field.required}
+                  class={`${inputClasses} min-h-[86px] resize-y`}
+                ></textarea>
+              </>
+            ) : (
+              <>
+                <label for={`f-${field.name}`} class="mb-2 block text-[15px] font-bold text-white">{field.label}</label>
+                <input
+                  type={field.kind}
+                  id={`f-${field.name}`}
+                  name={field.name}
+                  placeholder={field.placeholder}
+                  required={field.required}
+                  autocomplete={autocompleteFor(field.name)}
+                  class={inputClasses}
+                />
+              </>
+            )}
+          </fieldset>
+        ))}
+
+        {detailFields.length > 0 && (
+          <fieldset class="mb-5 border-0">
+            <legend class="mb-2 block text-[15px] font-bold text-white">Your details</legend>
+            <div class="grid gap-3.5 sm:grid-cols-2">
+              {detailFields.map((field) => (
+                <div>
+                  <label for={`f-${field.name}`} class="sr-only">{field.label}</label>
+                  <input
+                    type={field.kind === 'textarea' ? 'text' : field.kind}
+                    id={`f-${field.name}`}
+                    name={field.name}
+                    placeholder={'placeholder' in field ? field.placeholder : undefined}
+                    required={field.required}
+                    autocomplete={autocompleteFor(field.name)}
+                    class={inputClasses}
+                  />
+                </div>
+              ))}
+            </div>
+          </fieldset>
+        )}
+
+        <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <input type="hidden" name="_subject" value={form.subject} />
+        <input type="hidden" name="page" value={`/${content.slug}`} />
+        <input type="hidden" name="source" id="src" value="direct" />
+
+        <button
+          type="submit"
+          class="w-full cursor-pointer rounded-[10px] border-0 bg-green-btn p-4.5 font-sans text-lg font-extrabold text-white hover:brightness-110"
+        >
+          {form.submitLabel}
+        </button>
+        <p class="mt-3.5 text-center text-[12.5px] text-[#9FB4CC]">
+          No obligation. We’ll text you within 5 minutes.<br />
+          In a hurry? <a href={`tel:${site.phone}`} class="font-semibold text-white">Just ring {site.callName} on {site.phoneDisplay}</a>.
+        </p>
+      </form>
+    </div>
+
+    <div id="thanks" class="hidden py-5 text-center" aria-live="polite">
+      <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green text-[34px] font-extrabold text-white" aria-hidden="true">✓</div>
+      <h2 class="mt-4 mb-2.5 text-(length:--text-section) font-extrabold text-white">{form.thanks.heading}</h2>
+      <p class="mx-auto mb-3 max-w-[460px] text-[#C7D6E5]">{form.thanks.body}</p>
+      <p id="thanks-fallback" class="mx-auto mb-5 hidden max-w-[460px] font-semibold text-white">
+        If you don’t hear from us shortly, ring {site.callName} direct on {site.phoneDisplay}.
+      </p>
+      <a
+        href={`tel:${site.phone}`}
+        class="inline-block rounded-[10px] bg-green-btn px-6 py-4 text-[17px] font-extrabold text-white no-underline"
+      >
+        Don’t want to wait? Call {site.callName} now
+      </a>
+    </div>
+  </div>
+</Section>
+
+<script>
+  import { getSource } from '../../lib/attribution';
+  import { conv } from '../../lib/track';
+
+  const form = document.getElementById('leadform') as HTMLFormElement | null;
+  const src = document.getElementById('src') as HTMLInputElement | null;
+
+  // Stamp the traffic source so the inbox can tell ad leads from organic
+  if (src) src.value = getSource();
+
+  // Upgrade the native POST to fetch + in-place thank-you + conversion event.
+  // With JS off, the form still submits natively to the hosted endpoint.
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+    }
+
+    const showThanks = (sendFailed: boolean) => {
+      document.getElementById('formpanel')?.classList.add('hidden');
+      const thanks = document.getElementById('thanks');
+      thanks?.classList.remove('hidden');
+      if (sendFailed) document.getElementById('thanks-fallback')?.classList.remove('hidden');
+      thanks?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' },
+    })
+      .then((r) => {
+        if (!r.ok) throw new Error(`form endpoint responded ${r.status}`);
+        conv('lead', { content_name: document.title });
+        showThanks(false);
+      })
+      .catch((error: unknown) => {
+        // Never make a prospect feel they've done something wrong because a
+        // provider is down: show success, surface the phone number, log it.
+        // No conversion event — the lead wasn't delivered.
+        console.error('lead submit failed', error);
+        showThanks(true);
+      });
+  });
+</script>

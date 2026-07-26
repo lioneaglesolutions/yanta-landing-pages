@@ -1,0 +1,29 @@
+---
+import type { PageContent } from '../../content/schema';
+import Section from '../ui/Section.astro';
+
+interface Props {
+  content: PageContent;
+}
+
+const { content } = Astro.props;
+const applications = content.applications ?? [];
+const intro = content.applicationsIntro;
+---
+
+<Section>
+  {intro && (
+    <>
+      <h2 class="text-(length:--text-section) leading-[1.2] font-extrabold tracking-[-0.3px] text-navy">{intro.heading}</h2>
+      <p class="mt-3 max-w-[680px] text-[17px] text-muted">{intro.lead}</p>
+    </>
+  )}
+  <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    {applications.map((app) => (
+      <div class="rounded-[8px] border border-l-4 border-line border-l-green bg-white px-4 py-3.5">
+        <b class="block text-[15.5px] text-navy">{app.title}</b>
+        <span class="text-[13.5px] text-muted">{app.blurb}</span>
+      </div>
+    ))}
+  </div>
+</Section>
