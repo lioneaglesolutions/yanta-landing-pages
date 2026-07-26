@@ -10,7 +10,9 @@ declare global {
   }
 }
 
-const ADS_ID = import.meta.env.PUBLIC_GOOGLE_ADS_ID;
+import { DEFAULT_GOOGLE_ADS_ID } from './constants';
+
+const ADS_ID = import.meta.env.PUBLIC_GOOGLE_ADS_ID || DEFAULT_GOOGLE_ADS_ID;
 const LEAD_LABEL = import.meta.env.PUBLIC_GOOGLE_ADS_LEAD_LABEL;
 const CALL_LABEL = import.meta.env.PUBLIC_GOOGLE_ADS_CALL_LABEL;
 

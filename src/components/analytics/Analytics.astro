@@ -38,11 +38,15 @@ const gtagId = ga4Id ?? adsId;
 {gtagId && <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`}></script>}
 {gtagId && (
   <script is:inline define:vars={{ ga4Id, adsId }}>
+    // `define:vars` wraps this in an IIFE, so gtag must be assigned to window
+    // explicitly — a bare function declaration would be trapped in that scope
+    // and conv() in src/lib/track.ts (which calls window.gtag) would no-op,
+    // silently dropping every Ads conversion.
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    if (ga4Id) gtag('config', ga4Id);
-    if (adsId) gtag('config', adsId);
+    window.gtag = function gtag(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    if (ga4Id) window.gtag('config', ga4Id);
+    if (adsId) window.gtag('config', adsId);
   </script>
 )}
 

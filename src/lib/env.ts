@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { DEFAULT_GOOGLE_ADS_ID } from './constants';
 
 /**
  * Build-time env validation — a malformed key fails the build, not production.
@@ -10,7 +11,7 @@ const envSchema = z.object({
   PUBLIC_FORM_ENDPOINT: z.url().default('https://formspree.io/f/REPLACE_ME'),
   PUBLIC_META_PIXEL_ID: z.string().optional(),
   PUBLIC_GA4_ID: z.string().optional(),
-  PUBLIC_GOOGLE_ADS_ID: z.string().optional(),
+  PUBLIC_GOOGLE_ADS_ID: z.string().default(DEFAULT_GOOGLE_ADS_ID),
   PUBLIC_GOOGLE_ADS_LEAD_LABEL: z.string().optional(),
   PUBLIC_GOOGLE_ADS_CALL_LABEL: z.string().optional(),
   PUBLIC_SITE_URL: z.url().default('https://www.yanta.com.au'),
