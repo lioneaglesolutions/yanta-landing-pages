@@ -29,6 +29,12 @@ at build. See `src/pages/_drafts/README.md` to publish them again.
 
 Every old Wix URL redirects to its new home — see `redirects` in `astro.config.mjs`.
 
+`@astrojs/sitemap` emits `/sitemap-index.xml` plus `/sitemap-0.xml`. Because crawlers and people
+both try `/sitemap.xml` first, `vercel.json` **rewrites** (not redirects) `/sitemap.xml` to the
+index, so the conventional URL serves the real thing with a 200. `robots.txt` advertises
+`/sitemap.xml`. That rewrite has no equivalent in `astro.config.mjs`, so if `vercel.json` is ever
+regenerated from the Astro redirect list, re-add the `rewrites` block.
+
 ## How it's put together
 
 **All copy lives in content modules**, never in components:
