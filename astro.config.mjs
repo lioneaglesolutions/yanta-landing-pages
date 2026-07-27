@@ -1,14 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://www.yanta.com.au',
   output: 'static',
-  // /thanks is a post-submission confirmation page carrying noindex — keep it out
-  // of the sitemap so the two signals don't contradict each other.
-  integrations: [sitemap({ filter: (page) => !page.includes('/thanks') })],
+  // No sitemap integration: it always emits an index plus numbered child files,
+  // which is overkill for ~20 URLs. src/pages/sitemap.xml.ts builds one flat
+  // sitemap at the conventional path instead, and handles the /thanks exclusion.
+  integrations: [],
   vite: { plugins: [tailwindcss()] },
   image: { formats: ['avif', 'webp'] },
   redirects: {

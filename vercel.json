@@ -1,11 +1,15 @@
 {
-  "rewrites": [
-    {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap-index.xml"
-    }
-  ],
   "redirects": [
+    {
+      "source": "/sitemap-index.xml",
+      "destination": "/sitemap.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/sitemap-0.xml",
+      "destination": "/sitemap.xml",
+      "statusCode": 301
+    },
     {
       "source": "/hire",
       "destination": "/equipment",

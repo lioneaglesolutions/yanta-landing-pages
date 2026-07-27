@@ -29,11 +29,18 @@ at build. See `src/pages/_drafts/README.md` to publish them again.
 
 Every old Wix URL redirects to its new home — see `redirects` in `astro.config.mjs`.
 
-`@astrojs/sitemap` emits `/sitemap-index.xml` plus `/sitemap-0.xml`. Because crawlers and people
-both try `/sitemap.xml` first, `vercel.json` **rewrites** (not redirects) `/sitemap.xml` to the
-index, so the conventional URL serves the real thing with a 200. `robots.txt` advertises
-`/sitemap.xml`. That rewrite has no equivalent in `astro.config.mjs`, so if `vercel.json` is ever
-regenerated from the Astro redirect list, re-add the `rewrites` block.
+The sitemap is a single flat file at `/sitemap.xml`, built by `src/pages/sitemap.xml.ts`.
+`@astrojs/sitemap` was removed: it always emits an index plus numbered child files
+(`sitemap-index.xml` → `sitemap-0.xml`), which is machinery for sites past 50,000 URLs, not for
+~20. The endpoint stays automatic — static routes come from globbing `src/pages/**/*.astro`
+(so publishing a drafted landing page adds it), and the machine and project URLs come from the
+same content modules the `[slug].astro` files use for `getStaticPaths`. Trailing slashes match
+the canonicals `Seo.astro` emits.
+
+The two old sitemap paths 301 to `/sitemap.xml` in `vercel.json` so anything holding a cached
+reference — Search Console included — follows rather than 404s. Those two redirects live **only**
+in `vercel.json`, deliberately: Astro's `redirects` config emits meta-refresh HTML stubs, and
+serving HTML at a `.xml` path is worse for a crawler than a 404.
 
 ## How it's put together
 
