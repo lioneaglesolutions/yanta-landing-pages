@@ -9,17 +9,6 @@ export interface ServiceGroup {
   image: string;
 }
 
-/**
- * Ported from the old Wix site, which listed these in the /services page metadata.
- * NOTE: AS4801 was superseded by ISO 45001 (transition closed 2021) — confirm with
- * Ian whether the current certificate is AS4801 or ISO 45001 before tender use.
- */
-export const certifications = [
-  { standard: 'ISO 9001', label: 'Quality Management' },
-  { standard: 'ISO 14001', label: 'Environmental Management' },
-  { standard: 'AS 4801', label: 'Occupational Health & Safety' },
-] as const;
-
 export const peopleStatement =
   'What sets us apart is more than technical capability — it’s our people. Backed by decades of experience, our dedicated workforce brings innovation, reliability, and unmatched workmanship to every site. Supported by strong project management, HSE systems, and logistics, we mobilise quickly and deliver seamlessly.';
 
